@@ -15,5 +15,12 @@
   <%= @member.exit_cycle %>
 </p>
 
+<p>
+  <strong>Projects:</strong>
+  <% @member.projects.each do |project|%>
+    <p> <%= project.name %> </p>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_member_path(@member) %> |
 <%= link_to 'Back', members_path %>

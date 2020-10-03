@@ -12,7 +12,7 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @project.type %>
+  <%= @project.type_project %>
 </p>
 
 <p>
@@ -28,6 +28,13 @@
 <p>
   <strong>State:</strong>
   <%= @project.state %>
+</p>
+
+<p>
+  <strong>Members:</strong>
+  <% @project.members.each do |member|%>
+    <p> <%= member.name %> </p>
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |

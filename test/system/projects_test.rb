@@ -19,7 +19,7 @@ class ProjectsTest < ApplicationSystemTestCase
     check "Internal" if @project.internal
     fill_in "Name", with: @project.name
     fill_in "State", with: @project.state
-    fill_in "Type", with: @project.type
+    fill_in "Type Project", with: @project.type_project
     click_on "Create Project"
 
     assert_text "Project was successfully created"
@@ -35,7 +35,7 @@ class ProjectsTest < ApplicationSystemTestCase
     check "Internal" if @project.internal
     fill_in "Name", with: @project.name
     fill_in "State", with: @project.state
-    fill_in "Type", with: @project.type
+    fill_in "Type Project", with: @project.type_project
     click_on "Update Project"
 
     assert_text "Project was successfully updated"

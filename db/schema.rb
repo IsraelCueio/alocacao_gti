@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2020_10_02_122152) do
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.string "descriptions"
-    t.integer "type"
+    t.integer "type_project"
     t.integer "complexity"
     t.boolean "internal"
     t.integer "state"
