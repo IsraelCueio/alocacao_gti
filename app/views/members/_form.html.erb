@@ -16,10 +16,10 @@
     <%= f.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= f.label :load %>
-    <%= f.number_field :load %>
-  </div>
+  <p>
+  <strong>Load:</strong>
+  <%= @member.calcload %>
+  </p>
 
   <div class="field">
     <%= f.label :exit_cycle %>

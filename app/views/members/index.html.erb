@@ -16,7 +16,7 @@
     <% @members.each do |member| %>
       <tr>
         <td><%= member.name %></td>
-        <td><%= member.load %></td>
+        <td><%= member.calcload %></td>
         <td><%= member.exit_cycle %></td>
         <td><%= link_to 'Show', member %></td>
         <td><%= link_to 'Edit', edit_member_path(member) %></td>

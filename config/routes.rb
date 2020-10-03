@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'pages#index'
   resources :projects
   resources :positions
   resources :members
