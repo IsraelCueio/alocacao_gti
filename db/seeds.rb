@@ -5,3 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Member.create(name: 'Gusta')
+p '######Membro criado com sucesso######'
+Project.create(
+                name: 'Alocação GTi',
+                descriptions:'Projeto para ajudar na alocação dos membros',
+                complexity: 2,
+                internal: true,
+                state: 1
+              )
+
+p '######Projeto criado com sucesso######'
+
+Position.create(name:'Diretor')
+
+p '######Cargo criado com sucesso######'

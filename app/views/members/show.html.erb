@@ -22,5 +22,12 @@
   <% end %>
 </p>
 
+<p>
+  <strong>Positions:</strong>
+  <% @member.positions.each do |position|%>
+    <p> <%= position.name %> </p>
+  <% end %>
+</p>
+
 <%= link_to 'Edit', edit_member_path(@member) %> |
 <%= link_to 'Back', members_path %>

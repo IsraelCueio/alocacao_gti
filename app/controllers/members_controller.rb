@@ -69,6 +69,7 @@ class MembersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def member_params
-      params.require(:member).permit(:name, :load, :exit_cycle)
+      params.require(:member).permit(:name, :load, :exit_cycle,
+      member_positions_attributes: [:position_id, :_destroy])
     end
 end
