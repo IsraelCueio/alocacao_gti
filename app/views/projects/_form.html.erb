@@ -1,84 +1,88 @@
 
-    <div class="card">
-      <div class="card-content">
-        <%= form_for @project do |f| %>
+<% if project.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-          <% if project.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+    <ul>
+      <% project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
-              <ul>
-                <% project.errors.full_messages.each do |message| %>
-                  <li><%= message %></li>
-                <% end %>
-              </ul>
-            </div>
-          <% end %>
+<div class="card mt-3">
+  <div class="card-content">
+    <%= form_for @project do |f| %>
 
-          <div class="field">
-            <%= f.label :name , class:"label"%>
-            <div class="control">
-              <%= f.text_field :name , class:"input", type:"text"%>
-            </div>
-          </div>
-
-          <div class="field">
-            <%= f.label :descriptions, class:"label" %>
-            <div class="control">
-              <%= f.text_area :descriptions, class:"textarea" %>
-            </div>
-          </div>
-
-          <div class="field is-grouped">   
-            <div class="field mr-2">
-              <%= f.label :type_project, class:"label" %>  
-              <div class="control">
-                <div class="select">
-                  <%= f.select :type_project, [1,2,3,4], class:"select" %>
-                </div>
-              </div>
-            </div>
-            
-            <div class="field mr-2">
-              <%= f.label :complexity, class:"label" %>
-              <div class="control">
-                <div class="select">
-                  <%= f.select :complexity, [1,2,3,4], class:"select" %>
-                </div>
-              </div>
-            </div>
-            
-            <div class="field mr-2">
-              <%= f.label :state, class:"label" %>
-              <div class="control">
-                <div class="select">
-                  <%= f.select :state, [1,2,3,4], class:"select" %>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="field">
-            <div class="control">
-              <%= f.label :internal %>
-              <label class="checkbox">
-                <%= f.check_box :internal, type:"checkbox" %>
-              </label>
-            </div>
-          </div>
-
-          <h3>Project Members:</h3>
-          <div id='member_projects'>
-            <%= f.fields_for :member_projects do |member_project| %>
-              <%= render 'member_project_fields', :f => member_project %>
-            <% end %>
-            <div class='links my-4'>
-              <%= link_to_add_association 'Add member', f, :member_projects %>
-            </div>
-          </div>
-          <div class="buttons">
-            <button class="button is-primary">Submit</button>
-          </div>
-        <% end %>
+      <div class="field">
+        <%= f.label :name , class:"label"%>
+        <div class="control">
+          <%= f.text_field :name , class:"input", type:"text"%>
+        </div>
       </div>
-    </div>
+
+      <div class="field">
+        <%= f.label :descriptions, class:"label" %>
+        <div class="control">
+          <%= f.text_area :descriptions, class:"textarea" %>
+        </div>
+      </div>
+
+      <div class="field is-grouped">   
+        <div class="field mr-2">
+          <%= f.label :type_project, class:"label" %>  
+          <div class="control">
+            <div class="select">
+              <%= f.select :type_project, Project.type_projects.keys, class:"select" %>
+            </div>
+          </div>
+        </div>
+        
+        <div class="field mr-2">
+          <%= f.label :complexity, class:"label" %>
+          <div class="control">
+            <div class="select">
+              <%= f.select :complexity, Project.complexities.keys, class:"select" %>
+            </div>
+          </div>
+        </div>
+        
+        <div class="field mr-2">
+          <%= f.label :state, class:"label" %>
+          <div class="control">
+            <div class="select">
+              <%= f.select :state, Project.states.keys, class:"select" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <%= f.label :internal %>
+          <label class="checkbox">
+            <%= f.check_box :internal, type:"checkbox" %>
+          </label>
+        </div>
+      </div>
+
+      <h3>Project Members:</h3>
+      <hr>
+      
+      <div id='member_projects'>
+        <%= f.fields_for :member_projects do |member_project| %>
+          <%= render 'member_project_fields', :f => member_project %>
+        <% end %>
+        <div class='links my-4'>
+          <%= link_to_add_association 'Add member', f, :member_projects %>
+        </div>
+      </div>
+      <hr>
+
+      <div class="buttons">
+        <button class="button is-primary">Submit</button>
+      </div>
+    <% end %>
+  </div>
+</div>
