@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2020_10_02_122152) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "member_positions", force: :cascade do |t|
-    t.integer "member_id", null: false
-    t.integer "position_id", null: false
+    t.bigint "member_id", null: false
+    t.bigint "position_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["member_id"], name: "index_member_positions_on_member_id"
@@ -22,8 +25,8 @@ ActiveRecord::Schema.define(version: 2020_10_02_122152) do
   end
 
   create_table "member_projects", force: :cascade do |t|
-    t.integer "member_id", null: false
-    t.integer "project_id", null: false
+    t.bigint "member_id", null: false
+    t.bigint "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["member_id"], name: "index_member_projects_on_member_id"
