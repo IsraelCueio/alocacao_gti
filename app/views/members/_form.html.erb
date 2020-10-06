@@ -1,45 +1,50 @@
-<%= form_for @member do |f| %>
-  <% if member.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
+<% if member.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(member.errors.count, "error") %> prohibited this member from being saved:</h2>
 
-      <ul>
-        <% member.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <p>
-  <strong>Load:</strong>
-  <%= @member.calcload %>
-  </p>
-
-  <div class="field">
-    <%= f.label :exit_cycle %>
-    <%= f.check_box :exit_cycle %>
-  </div>
-
-  <h3>Cargo do membro</h3>
-  <div id='member_positions'>
-    <%= f.fields_for :member_positions do |member_position| %>
-      <%= render 'member_position_fields', :f => member_position %>
-    <% end %>
-    <div class='links'>
-      <%= link_to_add_association 'add position', f, :member_positions %>
-    </div>
-  </div>
-
-
-
-
-  <div class="actions">
-    <%= f.submit %>
+    <ul>
+      <% member.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
   </div>
 <% end %>
+
+<div class="card mt-3">
+  <div class="card-content">
+
+    <%= form_for @member do |f| %>
+      <div class="field">
+        <%= f.label :name , class:"label"%>
+        <div class="control">
+          <%= f.text_field :name , class:"input", type:"text"%>
+        </div>
+      </div>
+
+      <div class="field">
+        <div class="control">
+          <%= f.label :exit_cycle %>
+          <label class="checkbox">
+            <%= f.check_box :exit_cycle, type:"checkbox" %>
+          </label>
+        </div>
+      </div>
+
+      <h3>Member positions: </h3>
+      <hr>
+
+      <div id='member_positions'>
+        <%= f.fields_for :member_positions do |member_position| %>
+          <%= render 'member_position_fields', :f => member_position %>
+        <% end %>
+        <div class='links my-4'>
+          <%= link_to_add_association 'add position', f, :member_positions %>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button class="button is-primary">Submit</button>
+      </div>
+    <% end %>
+  </div>
+</div>

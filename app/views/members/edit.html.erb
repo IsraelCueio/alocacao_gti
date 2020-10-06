@@ -1,6 +1,12 @@
-<h1>Editing Member</h1>
+<div class="columns is-centered mt-5">
+  <div class="column is-one-third">
+    <h1 class="subtitle">Editing Member</h1>
 
-<%= render 'form', member: @member %>
+    <%= render 'form', member: @member %>
+    <div class="mt-4 ml-2">
+      <%= link_to 'Show', @member %> |
+      <%= link_to 'Back', members_path %>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Show', @member %> |
-<%= link_to 'Back', members_path %>

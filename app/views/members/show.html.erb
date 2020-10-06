@@ -1,33 +1,51 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @member.name %>
-</p>
+<div class="columns is-centered mt-5">
+  <div class="column is-one-third">
+    <p id="notice"><%= notice %></p>
+    <div class="card mt-3">
+      <div class="card-content">
 
-<p>
-  <strong>Load:</strong>
-  <%= @member.calcload %>
-</p>
+        <div class="title">
+          <h1 class="title has-text-centered">Project</h1>
+        </div>
+        <hr>
 
-<p>
-  <strong>Exit cycle:</strong>
-  <%= @member.exit_cycle %>
-</p>
+        <h2 class="subtitle">
+          <strong>Name:</strong> <%= @member.name %> 
+        </h2>
+        <hr>
 
-<p>
-  <strong>Projects:</strong>
-  <% @member.projects.each do |project|%>
-    <p> <%= project.name %> </p>
-  <% end %>
-</p>
+        <h2 class="subtitle">
+          <strong>Load:</strong> <%= @member.calcload  %> 
+        </h2>
+        <hr>
 
-<p>
-  <strong>Positions:</strong>
-  <% @member.positions.each do |position|%>
-    <p> <%= position.name %> </p>
-  <% end %>
-</p>
+        <h2 class="subtitle">
+          <strong>Exit cycle:</strong> <%= human_boolean @member.exit_cycle  %> 
+        </h2>
+        <hr>
 
-<%= link_to 'Edit', edit_member_path(@member) %> |
-<%= link_to 'Back', members_path %>
+        <strong>Projects:</strong>
+
+        <p>
+          <% @member.projects.each do |project|%>
+            <p> <%= project.name %> </p>
+          <% end %>
+        </p>
+        <hr>
+
+        <strong>Positions:</strong>
+        <p>
+          <% @member.positions.each do |position|%>
+            <p> <%= position.name %> </p>
+          <% end %>
+        </p>
+
+      </div>
+    </div>
+    <div class="mt-4 ml-2">
+      <%= link_to 'Edit', edit_member_path(@member) %> |
+      <%= link_to 'Back', members_path %>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,11 @@
-<h1>Editing Position</h1>
+<div class="columns is-centered mt-5">
+  <div class="column is-one-third">
+    <h1 class="subtitle">Editing Position</h1>
 
-<%= render 'form', position: @position %>
-
-<%= link_to 'Show', @position %> |
-<%= link_to 'Back', positions_path %>
+    <%= render 'form', position: @position %>
+    <div class="mt-4 ml-2">
+      <%= link_to 'Show', @position %> |
+      <%= link_to 'Back', positions_path %>
+    </div>
+  </div>
+</div>

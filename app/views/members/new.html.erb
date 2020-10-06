@@ -1,5 +1,10 @@
-<h1>New Member</h1>
+<div class="columns is-centered mt-5">
+  <div class="column is-one-third">
+    <h1 class="subtitle">New Member</h1>
 
-<%= render 'form', member: @member %>
-
-<%= link_to 'Back', members_path %>
+    <%= render 'form', member: @member %>
+    <div class="mt-4 ml-2">
+      <%= link_to 'Back', members_path %>
+    </div>
+  </div>
+</div>

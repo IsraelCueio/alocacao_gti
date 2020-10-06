@@ -1,32 +1,42 @@
-<%= form_with(model: position, local: true) do |form| %>
-  <% if position.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(position.errors.count, "error") %> prohibited this position from being saved:</h2>
+<% if position.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(position.errors.count, "error") %> prohibited this position from being saved:</h2>
 
-      <ul>
-        <% position.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :load %>
-    <%= form.number_field :load %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <ul>
+      <% position.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
   </div>
 <% end %>
+<div class="card mt-3">
+  <div class="card-content">
+    <%= form_with(model: position, local: true) do |f| %>
+      
+      <div class="field">
+        <%= f.label :name , class:"label"%>
+        <div class="control">
+          <%= f.text_field :name , class:"input", type:"text"%>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :description , class:"label"%>
+        <div class="control">
+          <%= f.text_field :description , class:"input", type:"text"%>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :load , class:"label"%>
+        <div class="control">
+          <%= f.text_field :load , class:"input", type:"text"%>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button class="button is-primary">Submit</button>
+      </div>
+    <% end %>
+  </div>
+</div>
