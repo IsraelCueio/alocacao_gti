@@ -1,9 +1,9 @@
 <div class="columns is-centered mt-5">
   <div class="column is-one-third">
-    <div class="card">
+    <p id="notice"><%= notice %></p>
+    <div class="card mt-3">
       <div class="card-content">
 
-        <p id="notice"><%= notice %></p>
         <div class="title">
           <h1 class="title has-text-centered">Project</h1>
         </div>
@@ -36,16 +36,13 @@
           <strong>State:</strong>
           <%= @project.state %>
         </span>
-      
         <hr>
 
-        <p>
-          <strong>Members:</strong>
-          <% @project.members.each do |member|%>
-            <p> <%= member.name %> </p>
-          <% end %>
-        </p>
-
+        <strong>Members:</strong>
+        
+        <% @project.members.each do |member|%>
+          <p> <%= member.name %> </p>
+        <% end %>
 
       </div>
     </div>
