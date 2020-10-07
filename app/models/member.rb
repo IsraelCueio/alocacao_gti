@@ -9,5 +9,9 @@ class Member < ApplicationRecord
 
   def calcload
     member_load = 0
+    positions.each do |position|
+      member_load += position.load
+    end
+    member_load
   end
 end
