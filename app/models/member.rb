@@ -8,6 +8,6 @@ class Member < ApplicationRecord
   accepts_nested_attributes_for :member_positions, reject_if: :all_blank, allow_destroy: true
 
   def calcload
-    update(load: positions.sum(:load))
+    update(load: positions.sum(:load) + projects.sum(:load))
   end
 end
