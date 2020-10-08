@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.7.2'
 
 # Cocoon makes it easier to handle nested forms.
 gem "cocoon"
