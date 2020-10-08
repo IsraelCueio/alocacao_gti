@@ -9,9 +9,9 @@
       <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Load</th>
-            <th>Exit cycle</th>
+            <th><%= sort_link(@q, :name) %></th>
+            <th><%= sort_link(@q, :load) %></th>
+            <th><%= sort_link(@q, :exit_cycle) %></th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -20,7 +20,7 @@
           <% @members.each do |member| %>
             <tr>
               <td><%= member.name %></td>
-              <td><%= member.calcload %></td>
+              <td><%= member.load %></td>
               <td><%= human_boolean member.exit_cycle %></td>
               <td><%= link_to 'Show', member %></td>
               <td><%= link_to 'Edit', edit_member_path(member) %></td>

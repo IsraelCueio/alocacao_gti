@@ -4,7 +4,8 @@ class PositionsController < ApplicationController
   # GET /positions
   # GET /positions.json
   def index
-    @positions = Position.all
+    @q = Position.ransack(params[:q])
+    @positions = @q.result.order(load: :desc)
   end
 
   # GET /positions/1

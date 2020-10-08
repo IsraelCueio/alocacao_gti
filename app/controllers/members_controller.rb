@@ -4,7 +4,8 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.all
+    @q = Member.ransack(params[:q])
+    @members = @q.result.order(load: :desc)
   end
 
   # GET /members/1
