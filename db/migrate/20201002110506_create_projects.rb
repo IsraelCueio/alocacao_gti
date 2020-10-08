@@ -7,6 +7,7 @@ class CreateProjects < ActiveRecord::Migration[6.0]
       t.integer :complexity
       t.boolean :internal
       t.integer :state
+      t.integer :load
 
       t.timestamps
     end

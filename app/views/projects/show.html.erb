@@ -38,7 +38,13 @@
           <%= @project.state %>
         </span>
         <hr>
-
+        
+        <span class="mr-2">
+          <strong>Load:</strong>
+          <%= @project.load %>
+        </span>
+        <hr>
+        
         <strong>Members:</strong>
         
         <% @project.members.each do |member|%>

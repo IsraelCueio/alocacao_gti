@@ -1,10 +1,55 @@
 class Project < ApplicationRecord
-  enum type_project: [ :Site, :Woocommerce, :System ]
-  enum complexity: [ :Beginner, :Intermediate, :Experient]
-  enum state: [ :Starting, :Middle, :Finishing, :Support]
+  before_save :calcload
+  after_save :update_loads
+
+  enum type_project: %i[Site Woocommerce Consulting System]
+  enum complexity: %i[Beginner Intermediate Experient]
+  enum state: %i[Stoped Starting Middle Finishing Support]
 
   has_many :member_projects, dependent: :destroy
   has_many :members, through: :member_projects
 
   accepts_nested_attributes_for :member_projects, reject_if: :all_blank, allow_destroy: true
+
+  def update_loads
+    members.each(&:calcload)
+  end
+
+  def calcload
+    self.load = project_type_load * project_factors
+  end
+
+  def project_type_load
+    case type_project
+    when 'Site' then 1
+    when 'Woocommerce' then 2
+    when 'Consulting' then 3
+    when 'System' then 4
+    else 1
+    end
+  end
+
+  def project_factors
+    complexity_factor * state_factor
+  end
+
+  def complexity_factor
+    case complexity
+    when 'Beginner' then 1
+    when 'Intermediate' then 2
+    when 'Experient' then 3
+    else 1
+    end
+  end
+
+  def state_factor
+    case state
+    when 'Stoped' then 0.2
+    when 'Starting' then 1
+    when 'Middle' then 1
+    when 'Finishing' then 1
+    when 'Support' then 0.5
+    else 1
+    end
+  end
 end

@@ -8,10 +8,6 @@ class Member < ApplicationRecord
   accepts_nested_attributes_for :member_positions, reject_if: :all_blank, allow_destroy: true
 
   def calcload
-    member_load = 0
-    positions.each do |position|
-      member_load += position.load
-    end
-    member_load
+    update(load: positions.sum(:load))
   end
 end
