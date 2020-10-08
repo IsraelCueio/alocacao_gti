@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
-  before_save :calcload
-  after_save :update_loads
+  before_save :calc_project_load
+  after_save :update_members_loads
 
   enum type_project: %i[Site Woocommerce Consulting System]
   enum complexity: %i[Beginner Intermediate Experient]
@@ -11,11 +11,11 @@ class Project < ApplicationRecord
 
   accepts_nested_attributes_for :member_projects, reject_if: :all_blank, allow_destroy: true
 
-  def update_loads
-    members.each(&:calcload)
+  def update_members_loads
+    members.each(&:calc_member_load)
   end
 
-  def calcload
+  def calc_project_load
     self.load = project_type_load * complexity_factor * state_factor
   end
 
