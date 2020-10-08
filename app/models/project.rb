@@ -16,21 +16,17 @@ class Project < ApplicationRecord
   end
 
   def calcload
-    self.load = project_type_load * project_factors
+    self.load = project_type_load * complexity_factor * state_factor
   end
 
   def project_type_load
     case type_project
     when 'Site' then 1
     when 'Woocommerce' then 2
-    when 'Consulting' then 3
+    when 'Consulting' then 2
     when 'System' then 4
     else 1
     end
-  end
-
-  def project_factors
-    complexity_factor * state_factor
   end
 
   def complexity_factor
