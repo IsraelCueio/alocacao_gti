@@ -1,15 +1,31 @@
-<nav class="navbar is-white has-shadow" role="navigation" aria-label="main navigation">
+<nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <%= link_to root_path, class:"nav-item mx-5 my-1" do %>
-      <%= image_tag '/logo.png', size:'100x100'%>
+    <%= link_to root_path, class:"navbar-item" do %>
+      <%= image_tag '/logo.png' %>
     <% end %>
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
   </div>
 
-  <div id="navbarBasicExample" class="navbar-menu">
+  <div id="navbar" class="navbar-menu">
     <div class="navbar-start">
-      <%= link_to 'Projects', projects_path, class: "navbar-item m-2" %>
-      <%= link_to 'Members', members_path, class: "navbar-item m-2" %>
-      <%= link_to 'Positions', positions_path, class: "navbar-item m-2" %>
+      <%= link_to 'Projects', projects_path, class: "navbar-item" %>
+      <%= link_to 'Members', members_path, class: "navbar-item" %>
+      <%= link_to 'Positions', positions_path, class: "navbar-item" %>
     </div>
   </div>
 </nav>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.navbar-burger');
+    burger.addEventListener('click', () => {
+      const menu = document.getElementById(burger.dataset.target);
+      burger.classList.toggle('is-active');
+      menu.classList.toggle('is-active');
+    });
+  });
+</script>
