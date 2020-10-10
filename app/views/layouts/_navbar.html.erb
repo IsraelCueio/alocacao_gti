@@ -3,7 +3,7 @@
     <%= link_to root_path, class:"navbar-item" do %>
       <%= image_tag '/logo.png' %>
     <% end %>
-    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar">
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar" data-turbolinks="false">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
@@ -19,13 +19,11 @@
   </div>
 </nav>
 
+
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const burger = document.querySelector('.navbar-burger');
-    burger.addEventListener('click', () => {
-      const menu = document.getElementById(burger.dataset.target);
-      burger.classList.toggle('is-active');
-      menu.classList.toggle('is-active');
+  $(document).ready( function() {
+    $('.navbar-burger').on('click', function() {
+      $('.navbar-menu').toggleClass('is-active', 'addOrRemove' )
     });
-  });
+  })
 </script>
