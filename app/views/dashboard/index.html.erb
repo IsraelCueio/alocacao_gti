@@ -1,42 +1,68 @@
 <section class="section">
   <div class="container">
     <%= image_tag '/dashboard.png'%>
+   
+    <h1 class='title has-text-centered'>Gerentes</h1>
+    <hr>
+    <div class='columns is-multiline mt-5'>
+      <% @managers.each do |manager| %>
+        <div class='column is-one-quarter'>
+          <div class="card">
+            <header class="card-header" style="background-color: #6650aa">
+              <p class="card-header-title has-text-white">
+                  <%= manager.name %>
+              </p>
+            </header>
+              <div class="card-content">
+                <div class="content">
+                  <strong>Load: <%= manager.load %></strong>
+                  <hr>
+                  <strong> Projects</strong><br>
+                  <% manager.projects.each do |project| %>
+                    <%= project.name %><br>
+                  <% end %>
+                </div>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
 
     <h1 class='title has-text-centered'>Projects</h1>
     <hr>
     <div class='columns is-multiline mt-5'>
-        <% @projects.each do |project| %>
-          <div class='column is-one-quarter'>
-            <div class="card">
-              <header class="card-header" style="background-color: #6650aa">
-                <p class="card-header-title has-text-white">
-                <%= project.name %>
-                </p>
-              </header>
-                <div class="card-content">
-                  <div class="content">
-                  <strong>Members:</strong>
+      <% @projects.each do |project| %>
+        <div class='column is-one-quarter'>
+          <div class="card">
+            <header class="card-header" style="background-color: #6650aa">
+              <p class="card-header-title has-text-white">
+              <%= project.name %>
+              </p>
+            </header>
+              <div class="card-content">
+                <div class="content">
+                <strong>Members:</strong>
+                <br>
+                <% project.members.each do |member| %>
+                  <%= member.name %>
+                    <strong> <%= show_if_manager_position member.positions %></strong> 
                   <br>
-                  <% project.members.each do |member| %>
-                      <%= member.name %><br>
-                  <% end %>
-                  <hr>
-
-                  <strong>Load: </strong> <%= project.load %>
-                  <br>
-                  <strong>State: </strong> <%= project.state %>
-                  <br>
-                  <strong>Complexity: </strong> <%= project.complexity %>
-                  <br>
-                  <strong>Internal: </strong> <%= human_boolean project.internal %>
-                  <hr>
-                  
-                  </div>
+                <% end %>
+                <hr>
+                <strong>Load: </strong> <%= project.load %>
+                <br>
+                <strong>State: </strong> <%= project.state %>
+                <br>
+                <strong>Complexity: </strong> <%= project.complexity %>
+                <br>
+                <strong>Internal: </strong> <%= human_boolean project.internal %>
+                <hr>
+                
                 </div>
-            </div>
+              </div>
           </div>
-        <%#= @members %>
-        <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
