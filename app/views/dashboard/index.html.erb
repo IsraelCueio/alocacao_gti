@@ -1,0 +1,73 @@
+ <!--<section class="section">
+  <div class="container">
+    <h1 class='title has-text-centered'>Members</h1>
+    <hr>
+
+    <div class='columns is-multiline mt-5'>
+        <% @members.each do |member| %>
+          <div class='column  is-one-quarter '>
+            <div class="card">
+              <header class="card-header">
+                <p class="card-header-title">
+                <%= member.name %>
+                </p>
+                <a href="#" class="card-header-icon" aria-label="more options">
+                <span class="icon">
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                </span>
+                </a>
+              </header>
+                <div class="card-content">
+                  <div class="content">
+                  <strong>Carga:<%=member.load%></strong>
+                  <br> 
+                  </div>
+                </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>-->
+
+<section class="section">
+  <div class="container">
+    <h1 class='title has-text-centered'>Projects</h1>
+    <hr>
+    <div class='columns is-multiline mt-5'>
+        <% @projects.each do |project| %>
+          <div class='column is-one-quarter'>
+            <div class="card">
+              <header class="card-header" style="background-color: #6650aa">
+                <p class="card-header-title has-text-white">
+                <%= project.name %>
+                </p>
+              </header>
+                <div class="card-content">
+                  <div class="content">
+                  <strong>Members:</strong>
+                  <br>
+                  <% project.members.each do |member| %>
+                      <%= member.name %><br>
+                  <% end %>
+                  <hr>
+
+                  <strong>Load: </strong> <%= project.load %>
+                  <br>
+                  <strong>State: </strong> <%= project.state %>
+                  <br>
+                  <strong>Complexity: </strong> <%= project.complexity %>
+                  <br>
+                  <strong>Internal: </strong> <%= human_boolean project.internal %>
+                  <hr>
+                  
+                  </div>
+                </div>
+            </div>
+          </div>
+        <%#= @members %>
+        <% end %>
+    </div>
+  </div>
+</div>
+
