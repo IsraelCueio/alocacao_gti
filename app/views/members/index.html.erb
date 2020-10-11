@@ -1,36 +1,37 @@
-<div class="columns is-centered">
- <div class="column is-half">
-  <p id="notice"><%= notice %></p>
+<section class="section">
+  <div class="container">
+    <p id="notice"><%= notice %></p>
 
-  <%= image_tag "/members.png"%>
+    <%= image_tag "/members.png"%>
 
-  <h1 class="title is-1 has-text-centered">Members</h1>
-    <div class="table-container">
-      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
-        <thead>
-          <tr>
-            <th><%= sort_link(@q, :name) %></th>
-            <th><%= sort_link(@q, :load) %></th>
-            <th><%= sort_link(@q, :exit_cycle) %></th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @members.each do |member| %>
+    <h1 class="title is-1 has-text-centered">Members</h1>
+      <div class="table-container">
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+          <thead>
             <tr>
-              <td><%= member.name %></td>
-              <td><%= member.load %></td>
-              <td><%= human_boolean member.exit_cycle %></td>
-              <td><%= link_to 'Show', member %></td>
-              <td><%= link_to 'Edit', edit_member_path(member) %></td>
-              <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <th><%= sort_link(@q, :name) %></th>
+              <th><%= sort_link(@q, :load) %></th>
+              <th><%= sort_link(@q, :exit_cycle) %></th>
+              <th colspan="3"></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <br>
-    <%= link_to 'New Member', new_member_path %>
+          </thead>
+
+          <tbody>
+            <% @members.each do |member| %>
+              <tr>
+                <td><%= member.name %></td>
+                <td><%= member.load %></td>
+                <td><%= human_boolean member.exit_cycle %></td>
+                <td><%= link_to 'Show', member %></td>
+                <td><%= link_to 'Edit', edit_member_path(member) %></td>
+                <td><%= link_to 'Destroy', member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <br>
+        <%= link_to 'New Member', new_member_path %>
+      </div>
   </div>
-</div>
+</section>
 
