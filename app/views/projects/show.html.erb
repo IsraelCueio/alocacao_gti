@@ -47,7 +47,7 @@
 
         <span class="mr-2">
           <strong>Gerente:</strong>
-          <%= @project.manager.name %>
+          <%= @project.manager.try(:name) %>
         </span>
         <hr>
         

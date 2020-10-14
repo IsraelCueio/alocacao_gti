@@ -42,7 +42,7 @@
               <div class="card-content">
                 <div class="content">
                 <strong>Manager:</strong>
-                <%= project.manager.name %>
+                <%= project.manager.try(:name) %>
                 <br>
                 <strong>Members:</strong>
                 <br>

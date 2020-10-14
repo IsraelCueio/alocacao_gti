@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 2020_10_13_225308) do
     t.integer "load"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "manager_id", null: false
+    t.bigint "manager_id"
     t.index ["manager_id"], name: "index_projects_on_manager_id"
   end
 
