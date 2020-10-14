@@ -9,7 +9,7 @@ class Project < ApplicationRecord
   has_many :member_projects, dependent: :destroy
   has_many :members, through: :member_projects
 
-  belongs_to :manager, class_name: :Member
+  belongs_to :manager, class_name: :Member, optional: true
 
   accepts_nested_attributes_for :member_projects, reject_if: :all_blank, allow_destroy: true
 

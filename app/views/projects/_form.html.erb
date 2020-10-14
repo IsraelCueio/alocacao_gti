@@ -71,7 +71,7 @@
         <div class="control">
           <%= f.label :manager, class:"label"  %>
           <label class="select mt-2">
-            <%= f.collection_select(:manager_id, Member.all, :id, :name)%>
+            <%= f.collection_select(:manager_id, Member.all, :id, :name, { include_blank: 'Select a member' })%>
           </label>
         </div>
       </div>
