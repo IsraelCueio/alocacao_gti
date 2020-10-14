@@ -13,7 +13,8 @@ Project.create(
                 descriptions:'Projeto para ajudar na alocação dos membros',
                 complexity: 2,
                 internal: true,
-                state: 1
+                state: 1,
+                manager: Member.last
               )
 
 p '######Projeto criado com sucesso######'

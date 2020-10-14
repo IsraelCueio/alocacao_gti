@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
   def index
     @projects = Project.all
-    @members = Member.all
-    @managers = Member.joins(:positions).where(positions: { manager: true })
+    managers_ids = Project.all.pluck(:manager_id).uniq
+    @managers = Member.where(id: managers_ids)
   end
 end

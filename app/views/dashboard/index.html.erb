@@ -17,8 +17,8 @@
                 <div class="content">
                   <strong>Load: <%= manager.load %></strong>
                   <hr>
-                  <strong> Projects</strong><br>
-                  <% manager.projects.each do |project| %>
+                  <strong> Projects manager</strong><br>
+                  <% manager.managing_projects.each do |project| %>
                     <%= project.name %><br>
                   <% end %>
                 </div>
@@ -41,12 +41,13 @@
             </header>
               <div class="card-content">
                 <div class="content">
+                <strong>Manager:</strong>
+                <%= project.manager.name %>
+                <br>
                 <strong>Members:</strong>
                 <br>
                 <% project.members.each do |member| %>
-                  <%= member.name %>
-                    <strong> <%= show_if_manager_position member.positions %></strong> 
-                  <br>
+                  <%= member.name %><br>
                 <% end %>
                 <hr>
                 <strong>Load: </strong> <%= project.load %>
