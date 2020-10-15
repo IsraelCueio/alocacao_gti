@@ -10,16 +10,14 @@
           <div class="card">
             <header class="card-header" style="background-color: #6650aa">
               <p class="card-header-title has-text-white">
-                  <%= manager.name %>
+                  <%= manager.name %> - Load: <%= manager.load %>
               </p>
             </header>
               <div class="card-content">
                 <div class="content">
-                  <strong>Load: <%= manager.load %></strong>
-                  <hr>
-                  <strong> Projects manager</strong><br>
-                  <% manager.managing_projects.each do |project| %>
-                    <%= project.name %><br>
+                  <strong>Managed projects: </strong><hr>
+                  <% manager.managing_projects.order(:state).each do |project| %>
+                      <p><%= project.name %> - <i><strong><%= project.state %></strong></i></p>
                   <% end %>
                 </div>
               </div>
@@ -31,7 +29,7 @@
     <h1 class='title has-text-centered'>Projects</h1>
     <hr>
     <div class='columns is-multiline mt-5'>
-      <% @projects.each do |project| %>
+      <% @projects.order(:state).each do |project| %>
         <div class='column is-one-quarter'>
           <div class="card">
             <header class="card-header" style="background-color: #6650aa">
@@ -45,9 +43,8 @@
                 <%= project.manager.try(:name) %>
                 <br>
                 <strong>Members:</strong>
-                <br>
                 <% project.members.each do |member| %>
-                  <%= member.name %><br>
+                  <%= member.name %>,
                 <% end %>
                 <hr>
                 <strong>Load: </strong> <%= project.load %>
@@ -57,7 +54,6 @@
                 <strong>Complexity: </strong> <%= project.complexity %>
                 <br>
                 <strong>Internal: </strong> <%= human_boolean project.internal %>
-                <hr>
                 
                 </div>
               </div>
