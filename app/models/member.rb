@@ -38,7 +38,7 @@ class Member < ApplicationRecord
   end
 
   def calc_project_managing_load(project)
-    project_type_load(project) * complexity_factor(project) * state_factor(project)
+    project_type_load(project) * complexity_factor(project) * manager_state_factor(project)
   end
 
   def project_type_load(project)
