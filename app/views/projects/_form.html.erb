@@ -22,13 +22,6 @@
         </div>
       </div>
 
-      <div class="field">
-        <%= f.label :descriptions, class:"label" %>
-        <div class="control">
-          <%= f.text_area :descriptions, class:"textarea" %>
-        </div>
-      </div>
-
       <div class="field is-grouped">   
         <div class="field mr-2">
           <%= f.label :type_project, class:"label" %>  
@@ -68,6 +61,7 @@
       </div>
 
       <h3>Managers:</h3>
+      <hr>
 
       <div id='managing_projects'>
         <%= f.fields_for :manager_projects do |manager_project| %>

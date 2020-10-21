@@ -8,8 +8,6 @@ class Project < ApplicationRecord
   has_many :member_projects, dependent: :destroy
   has_many :developers, through: :member_projects, source: :member
 
-  belongs_to :manager, class_name: :Member, optional: true
-
   has_many :manager_projects, dependent: :destroy
   has_many :managers, through: :manager_projects, source: :member
 

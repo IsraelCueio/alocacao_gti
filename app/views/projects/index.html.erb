@@ -12,7 +12,6 @@
         <thead>
           <tr>
             <th>Name</th>
-            <th>Descriptions</th>
             <th>Type</th>
             <th>Complexity</th>
             <th>Internal</th>
@@ -25,7 +24,6 @@
           <% @projects.each do |project| %>
             <tr>
               <td style="white-space: nowrap;"><%= project.name %></td>
-              <td><%= project.descriptions %></td>
               <td><%= project.type_project %></td>
               <td><%= project.complexity %></td>
               <td><%= human_boolean(project.internal)%></td>
