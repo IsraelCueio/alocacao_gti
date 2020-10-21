@@ -73,7 +73,8 @@ class ProjectsController < ApplicationController
     params.require(:project).permit(
       :name, :descriptions, :type_project,
       :complexity, :internal, :state, :manager_id,
-      member_projects_attributes: %i[id member_id _destroy]
+      member_projects_attributes: %i[id member_id _destroy],
+      manager_projects_attributes: %i[id member_id _destroy]
     )
   end
 end

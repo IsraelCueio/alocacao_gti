@@ -3,11 +3,14 @@ class Member < ApplicationRecord
   has_many :positions, through: :member_positions
 
   has_many :member_projects, dependent: :destroy
-  has_many :projects, through: :member_projects
+  has_many :developed_projects, through: :member_projects, source: :project
 
-  has_many :managing_projects, class_name: :Project, foreign_key: :manager_id, dependent: :destroy
+  has_many :manager_projects, dependent: :destroy
+  has_many :managed_projects, through: :manager_projects, source: :project
 
   accepts_nested_attributes_for :member_positions, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :member_projects, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :manager_projects, reject_if: :all_blank, allow_destroy: true
 
   def calc_member_load
     update(load: calc_development_load + calc_managing_load + calc_position_load)
@@ -19,7 +22,7 @@ class Member < ApplicationRecord
 
   def calc_development_load
     projects_load = 0
-    projects.each do |project|
+    developed_projects.each do |project|
       projects_load += calc_project_development_load(project)
     end
     projects_load
@@ -27,7 +30,7 @@ class Member < ApplicationRecord
 
   def calc_managing_load
     projects_load = 0
-    managing_projects.each do |project|
+    managed_projects.each do |project|
       projects_load += calc_project_managing_load(project)
     end
     projects_load

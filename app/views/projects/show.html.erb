@@ -47,14 +47,16 @@
 
         <span class="mr-2">
           <strong>Gerente:</strong>
-          <%= @project.manager.try(:name) %>
+          <% @project.managers.each do |manager| %>
+            <%= manager.try(:name) %>
+          <% end %>
         </span>
         <hr>
         
         <strong>Members:</strong>
         
-        <% @project.members.each do |member|%>
-          <p> <%= member.name %> </p>
+        <% @project.developers.each do |developer|%>
+          <p> <%= developer.name %> </p>
         <% end %>
 
       </div>

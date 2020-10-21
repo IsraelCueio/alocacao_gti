@@ -67,12 +67,14 @@
         </div>
       </div>
 
-      <div class="field">
-        <div class="control">
-          <%= f.label :manager, class:"label"  %>
-          <label class="select mt-2">
-            <%= f.collection_select(:manager_id, Member.all, :id, :name, { include_blank: 'Select a member' })%>
-          </label>
+      <h3>Managers:</h3>
+
+      <div id='managing_projects'>
+        <%= f.fields_for :manager_projects do |manager_project| %>
+          <%= render 'manager_project_fields', :f =>  manager_project %>
+        <% end %>
+        <div class='links my-4'>
+          <%= link_to_add_association 'add project', f , :manager_projects %>
         </div>
       </div>
 

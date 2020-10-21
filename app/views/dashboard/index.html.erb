@@ -16,7 +16,7 @@
               <div class="card-content">
                 <div class="content">
                   <strong>Managed projects: </strong><hr>
-                  <% manager.managing_projects.order(:state).each do |project| %>
+                  <% manager.managed_projects.each do |project| %>
                       <p><%= project.name %> - <i><strong><%= project.state %></strong></i></p>
                   <% end %>
                 </div>
@@ -40,11 +40,13 @@
               <div class="card-content">
                 <div class="content">
                 <strong>Manager:</strong>
-                <%= project.manager.try(:name) %>
+                <% project.managers.each do |manager| %>
+                  <%= manager.try(:name) %>
+                <% end %>
                 <br>
                 <strong>Members:</strong>
-                <% project.members.each do |member| %>
-                  <%= member.name %>,
+                <% project.developers.each do |developer| %>
+                  <%= developer.name %>
                 <% end %>
                 <hr>
                 <strong>Load: </strong> <%= project.load %>

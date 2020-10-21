@@ -30,8 +30,32 @@
         </div>
       </div>
 
-      <h3>Member positions: </h3>
       <hr>
+      <h3>Managed Projects: </h3>
+
+      <div id='managing_projects'>
+        <%= f.fields_for :manager_projects do |manager_project| %>
+          <%= render 'manager_project_fields', :f =>  manager_project %>
+        <% end %>
+        <div class='links my-4'>
+          <%= link_to_add_association 'add project', f , :manager_projects %>
+        </div>
+      </div>
+
+      <hr>
+      <h3>Member developed Projects: </h3>
+
+      <div id='member_projects'>
+        <%= f.fields_for :member_projects do |member_project| %>
+          <%= render 'member_project_fields', :f => member_project %>
+        <% end %>
+        <div class='links my-4'>
+          <%= link_to_add_association 'add project', f , :member_projects %>
+        </div>
+      </div>
+
+      <hr>
+      <h3>Member positions: </h3>
 
       <div id='member_positions'>
         <%= f.fields_for :member_positions do |member_position| %>

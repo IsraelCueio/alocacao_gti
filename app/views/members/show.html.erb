@@ -25,10 +25,19 @@
         </h2>
         <hr>
 
-        <strong>Projects:</strong>
+        <strong>Developed projects:</strong>
 
         <p>
-          <% @member.projects.each do |project|%>
+          <% @member.developed_projects.each do |project|%>
+            <p> <%= project.name %> </p>
+          <% end %>
+        </p>
+        <hr>
+
+        <strong>Managed Projects:</strong>
+
+        <p>
+          <% @member.managed_projects.each do |project|%>
             <p> <%= project.name %> </p>
           <% end %>
         </p>
