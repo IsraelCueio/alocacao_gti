@@ -50,7 +50,7 @@
           </div>
         </div>
       </div>
-
+    
       <div class="field">
         <div class="control">
           <%= f.label :internal %>
@@ -59,9 +59,9 @@
           </label>
         </div>
       </div>
+      <hr>
 
       <h3>Managers:</h3>
-      <hr>
 
       <div id='managing_projects'>
         <%= f.fields_for :manager_projects do |manager_project| %>
@@ -71,9 +71,9 @@
           <%= link_to_add_association 'add project', f , :manager_projects %>
         </div>
       </div>
-
-      <h3>Project Members:</h3>
       <hr>
+
+      <h3>Project Developers:</h3>
       
       <div id='member_projects'>
         <%= f.fields_for :member_projects do |member_project| %>
