@@ -11,11 +11,11 @@
       <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Complexity</th>
-            <th>Internal</th>
-            <th>State</th>
+            <th><%= sort_link(@q, :name) %></th>
+            <th><%= sort_link(@q, :type_project) %></th>
+            <th><%= sort_link(@q, :complexity) %></th>
+            <th><%= sort_link(@q, :internal) %></th>
+            <th><%= sort_link(@q, :state) %></th>
             <th>Options</th>
           </tr>
         </thead>

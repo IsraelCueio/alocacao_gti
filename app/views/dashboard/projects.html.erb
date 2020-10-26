@@ -1,0 +1,72 @@
+<section class="section">
+  <div class="container">
+
+    <%= render partial: "navbar", locals: { projects: "is-active" }%>
+    
+    <%= search_form_for @q, url: dashboard_path do |f|%>
+      <div class="field is-grouped">
+        <div class="field mr-2">
+          <%= f.label :state, class:"label" %>  
+          <div class="control">
+            <div class="select ">
+              <%= f.select :state_eq, Project.states.keys, include_blank: 'Todos' %>
+            </div>
+          </div>
+        </div>
+        <div class="field mr-2">
+          <%= f.label :complexity, class:"label" %>  
+          <div class="control">
+            <div class="select ">
+              <%= f.select :complexity_eq, Project.complexities.keys, include_blank: 'Todos' %>
+            </div>
+          </div>
+        </div>
+        <div class="field mr-2">
+          <%= f.label :type_project, class:"label" %>  
+          <div class="control">
+            <div class="select ">
+              <%= f.select :type_project_eq, Project.type_projects.keys, include_blank: 'Todos' %>
+            </div>
+          </div>
+        </div>
+        <div class="control mt-5 pt-2 mr-2">
+          <%= f.submit class:"button "%>
+        </div>
+      </div>
+    <% end %>
+
+    <div class='columns is-multiline mt-5'>
+      <% @projects.each do |project| %>
+        <div class='column is-one-quarter'>
+          <div class="card">
+            <header class="card-header" style="background-color: #6650aa">
+              <p class="card-header-title has-text-white">
+              <%= project.name %>
+              </p>
+            </header>
+              <div class="card-content">
+                <div class="content">
+                <strong>Manager:</strong>
+                <% project.managers.each do |manager| %>
+                  <%= manager.try(:name) %>
+                <% end %>
+                <br>
+                <strong>Members:</strong>
+                <% project.developers.each do |developer| %>
+                  <%= developer.name %>
+                <% end %>
+                <hr>
+                <strong>State: </strong> <%= project.state %>
+                <br>
+                <strong>Complexity: </strong> <%= project.complexity %>
+                <br>
+                <strong>Internal: </strong> <%= human_boolean project.internal %>
+                
+                </div>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,65 +1,69 @@
 <section class="section">
   <div class="container">
     <%#= image_tag '/dashboard.png'%>
-   
-    <h1 class='title has-text-centered'>Gerentes</h1>
-    <hr>
-    <div class='columns is-multiline mt-5'>
-      <% @managers.order(:load).each do |manager| %>
-        <div class='column is-one-quarter'>
-          <div class="card">
-            <header class="card-header" style="background-color: #6650aa">
-              <p class="card-header-title has-text-white">
-                  <%= manager.name %> - Load: <%= manager.load %>
-              </p>
-            </header>
-              <div class="card-content">
-                <div class="content">
-                  <strong>Managed projects: </strong><hr>
-                  <% manager.managed_projects.each do |project| %>
-                      <p><%= project.name %> - <i><strong><%= project.state %></strong></i></p>
-                  <% end %>
-                </div>
-              </div>
-          </div>
-        </div>
-      <% end %>
-    </div>
 
-    <h1 class='title has-text-centered'>Projects</h1>
-    <hr>
-    <div class='columns is-multiline mt-5'>
-      <% @projects.order(:state).each do |project| %>
-        <div class='column is-one-quarter'>
-          <div class="card">
-            <header class="card-header" style="background-color: #6650aa">
-              <p class="card-header-title has-text-white">
-              <%= project.name %>
-              </p>
-            </header>
-              <div class="card-content">
-                <div class="content">
-                <strong>Manager:</strong>
-                <% project.managers.each do |manager| %>
-                  <%= manager.try(:name) %>
-                <% end %>
-                <br>
-                <strong>Members:</strong>
-                <% project.developers.each do |developer| %>
-                  <%= developer.name %>
-                <% end %>
-                <hr>
-                <strong>State: </strong> <%= project.state %>
-                <br>
-                <strong>Complexity: </strong> <%= project.complexity %>
-                <br>
-                <strong>Internal: </strong> <%= human_boolean project.internal %>
-                
-                </div>
-              </div>
+    <%= render partial: "navbar", locals: { statistics: "is-active" }%>
+
+    <div class="tile is-ancestor">
+      <div class="tile is-parent">
+        <div class="tile is-child box ">
+          <p class="title is-1 is-spaced "><%= @projects_count%></p> 
+          <p class="subtitle">Projects</p> 
+        </div>
+      </div>
+
+      <div class="tile is-4 is-vertical is-parent">
+        <div class="tile is-child box">
+          <p class="title is-5">Sites</p>
+          <p class="subtitle"><%= @site_projects_count%></p>
+        </div>
+        <div class="tile is-child box">
+          <p class="title is-5">Woo</p>
+          <p class="subtitle"><%= @woo_projects_count%></p>
+        </div>
+        <div class="tile is-child box">
+          <p class="title is-5">Consulting</p>
+          <p class="subtitle"><%= @consult_projects_count%></p>
+        </div>
+        <div class="tile is-child box">
+          <p class="title is-5">System</p>
+          <p class="subtitle"><%= @system_projects_count%></p>
+        </div>
+      </div>
+    </div>
+    <div class="columns">
+      <div class="column">
+        <div class="card">
+          <div class="card-content">
+            <p class="title is-5 ">Starting Projects</p>
+            <p class="subtitle "><%= @starting_projects_count%></p>
           </div>
         </div>
-      <% end %>
+      </div>
+      <div class="column">
+        <div class="card">
+          <div class="card-content">
+            <p class="title is-5 ">Middle Projects</p>
+            <p class="subtitle "><%= @middle_projects_count%></p>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <div class="card-content">
+            <p class="title is-5 ">Finishing Projects</p>
+            <p class="subtitle "><%= @finishing_projects_count%></p>
+          </div>
+        </div>
+      </div>
+      <div class="column">
+        <div class="card">
+          <div class="card-content">
+            <p class="title is-5 ">Support Projects</p>
+            <p class="subtitle "><%= @support_projects_count%></p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

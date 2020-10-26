@@ -1,0 +1,28 @@
+<section class="section">
+  <div class="container">
+
+    <%= render partial: "navbar", locals: { developers: "is-active" }%>
+
+    <div class='columns is-multiline mt-5'>
+      <% @developers.each do |developer| %>
+        <div class='column is-one-quarter'>
+          <div class="card">
+            <header class="card-header" style="background-color: #6650aa">
+              <p class="card-header-title has-text-white">
+                  <%= developer.name %> - Load: <%= developer.load %>
+              </p>
+            </header>
+              <div class="card-content">
+                <div class="content">
+                  <strong>Developed projects: </strong><hr>
+                  <% developer.developed_projects.each do |project| %>
+                    <p><%= project.name %> - <i><strong><%= project.state %></strong></i></p>
+                  <% end %>
+                </div>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
