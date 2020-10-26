@@ -3,7 +3,7 @@
 
     <%= render partial: "navbar", locals: { projects: "is-active" }%>
     
-    <%= search_form_for @q, url: dashboard_path do |f|%>
+    <%= search_form_for @q, url: dashboard_projects_path do |f|%>
       <div class="field is-grouped">
         <div class="field mr-2">
           <%= f.label :state, class:"label" %>  
