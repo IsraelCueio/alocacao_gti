@@ -22,31 +22,31 @@
         </div>
       </div>
 
-      <div class="field is-grouped">   
-        <div class="field mr-2">
-          <%= f.label :type_project, class:"label" %>  
-          <div class="control">
-            <div class="select">
-              <%= f.select :type_project, Project.type_projects.keys, class:"select" %>
-            </div>
+      <div class="field is-horizontal">
+        <div class="field-body">
+          <div class="field m-0">
+            <%= f.label :type_project, class:"label" %>
+            <p class="control is-expanded has-icons-left">
+              <div class="select">
+                <%= f.select :type_project, Project.type_projects.keys, class:"select" %>
+              </div>
+            </p>
           </div>
-        </div>
-        
-        <div class="field mr-2">
-          <%= f.label :complexity, class:"label" %>
-          <div class="control">
-            <div class="select">
-              <%= f.select :complexity, Project.complexities.keys, class:"select" %>
-            </div>
+          <div class="field">
+            <%= f.label :complexity, class:"label" %>
+            <p class="control is-expanded has-icons-left">
+              <div class="select">
+                <%= f.select :complexity, Project.complexities.keys, class:"select" %>
+              </div>
+            </p>
           </div>
-        </div>
-        
-        <div class="field mr-2">
-          <%= f.label :state, class:"label" %>
-          <div class="control">
-            <div class="select">
-              <%= f.select :state, Project.states.keys, class:"select" %>
-            </div>
+          <div class="field">
+            <%= f.label :state, class:"label" %>
+            <p class="control is-expanded has-icons-left">
+              <div class="select">
+                <%= f.select :state, Project.states.keys, class:"select" %>
+              </div>
+            </p>
           </div>
         </div>
       </div>

@@ -14,9 +14,9 @@
             </header>
               <div class="card-content">
                 <div class="content">
-                  <strong>Managed projects: </strong><hr>
+                  <p><strong>Managed projects: </strong></p>
                   <% manager.managed_projects.each do |project| %>
-                      <p><%= project.name %> - <i><strong><%= project.state %></strong></i></p>
+                      <%= project.name %> - <i><strong><%= project.state %></strong></i><br>
                   <% end %>
                 </div>
               </div>

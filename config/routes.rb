@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :positions
   resources :members
-  get 'dashboard', to: 'dashboard#index'
+  get 'dashboard/statistics', to: 'dashboard#statistics'
   get 'dashboard/projects', to: 'dashboard#projects'
   get 'dashboard/managers', to: 'dashboard#managers'
   get 'dashboard/developers', to: 'dashboard#developers'

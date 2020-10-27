@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-  def index
+  def statistics
     @projects_count = Project.all.count
     @site_projects_count = Project.where(type_project: :Site).count
     @woo_projects_count = Project.where(type_project: :Woocommerce).count
