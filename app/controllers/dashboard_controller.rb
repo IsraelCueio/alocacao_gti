@@ -1,15 +1,13 @@
 class DashboardController < ApplicationController
   def index
     @projects_count = Project.all.count
-    @site_projects_count = Project.where(type_project: :Site).count
-    @woo_projects_count = Project.where(type_project: :Woocommerce).count
-    @consult_projects_count = Project.where(type_project: :Consulting).count
-    @system_projects_count = Project.where(type_project: :System).count
 
     @starting_projects_count = Project.where(state: :Starting).count
     @middle_projects_count = Project.where(state: :Middle).count
     @finishing_projects_count = Project.where(state: :Finishing).count
     @support_projects_count = Project.where(state: :Support).count
+
+    @project_types = ProjectType.all
   end
 
   def projects

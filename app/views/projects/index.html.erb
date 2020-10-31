@@ -24,7 +24,7 @@
           <% @projects.each do |project| %>
             <tr>
               <td style="white-space: nowrap;"><%= project.name %></td>
-              <td><%= project.type_project %></td>
+              <td><%= project.project_type.name %></td>
               <td><%= project.complexity %></td>
               <td><%= human_boolean(project.internal)%></td>
               <td><%= project.state %></td>

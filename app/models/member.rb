@@ -37,21 +37,11 @@ class Member < ApplicationRecord
   end
 
   def calc_project_development_load(project)
-    project_type_load(project) * complexity_factor(project) * state_factor(project)
+    project.project_type.load * complexity_factor(project) * state_factor(project)
   end
 
   def calc_project_managing_load(project)
-    project_type_load(project) * complexity_factor(project) * manager_state_factor(project)
-  end
-
-  def project_type_load(project)
-    case project.type_project
-    when 'Site' then 20
-    when 'Woocommerce' then 25
-    when 'Consulting' then 25
-    when 'System' then 30
-    else 1
-    end
+    project.project_type.load * complexity_factor(project) * manager_state_factor(project)
   end
 
   def complexity_factor(project)

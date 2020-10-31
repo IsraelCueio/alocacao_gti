@@ -4,8 +4,7 @@ class CreateProjectTypes < ActiveRecord::Migration[6.0]
       t.string :name
       t.integer :load
     end
-
+    
     add_reference :projects, :project_type, foreign_key: true
-    remove_column :projects, :type_project
   end
 end

@@ -24,13 +24,14 @@
 
       <div class="field is-grouped">   
         <div class="field mr-2">
-          <%= f.label :type_project, class:"label" %>  
+          <%= f.label :project_type, class:"label" %>  
           <div class="control">
             <div class="select">
-              <%= f.select :type_project, Project.type_projects.keys, class:"select" %>
+              <%= f.collection_select(:project_type_id, ProjectType.all, :id, :name) %>
             </div>
           </div>
         </div>
+
         
         <div class="field mr-2">
           <%= f.label :complexity, class:"label" %>

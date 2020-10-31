@@ -6,7 +6,7 @@ class Project < ApplicationRecord
 
   ransacker :state, formatter: proc { |v| states[v] }
   ransacker :complexity, formatter: proc { |v| complexities[v] }
-  ransacker :type_project, formatter: proc { |v| type_projects[v] }
+  # ransacker :type_project, formatter: proc { |v| type_projects[v] }
 
   belongs_to :project_type
 
