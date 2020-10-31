@@ -6,7 +6,7 @@ class RemoveTypeProjectFromProject < ActiveRecord::Migration[6.0]
     )
     
     ProjectType.create(
-      name: 'WooCommerce',
+      name: 'Woocommerce',
       load: '25'
     )
     
@@ -21,7 +21,7 @@ class RemoveTypeProjectFromProject < ActiveRecord::Migration[6.0]
     )
     Project.all.each do |project|
       type = ProjectType.find_by(name: project.type_project)
-      project.project_type_id = type.id
+      project.update_columns(project_type_id: type.id)
     end
     remove_column :projects, :type_project
   end
