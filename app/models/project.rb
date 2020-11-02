@@ -1,13 +1,15 @@
 class Project < ApplicationRecord
   after_save :update_developers_loads, :update_managers_loads
 
-  enum type_project: %i[Site Woocommerce Consulting System]
   enum complexity: %i[Beginner Intermediate Experient]
   enum state: %i[Stoped Starting Middle Finishing Support]
+  enum type_project: %i[Site Woocommerce Consulting System]
 
   ransacker :state, formatter: proc { |v| states[v] }
   ransacker :complexity, formatter: proc { |v| complexities[v] }
-  ransacker :type_project, formatter: proc { |v| type_projects[v] }
+  # ransacker :type_project, formatter: proc { |v| type_projects[v] }
+
+  belongs_to :project_type
 
   has_many :member_projects, dependent: :destroy
   has_many :developers, through: :member_projects, source: :member

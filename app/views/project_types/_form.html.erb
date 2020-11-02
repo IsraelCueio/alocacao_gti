@@ -1,0 +1,36 @@
+<% if project_type.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(project_type.errors.count, "error") %> prohibited this project type from being saved:</h2>
+
+    <ul>
+      <% project_type.errors.full_messages.each do |project_type| %>
+        <li><%= project_type %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<div class="card mt-3">
+  <div class="card-content">
+
+    <%= form_for @project_type do |f| %>
+      <div class="field">
+        <%= f.label :name, class:"label"%>
+        <div class="control">
+          <%= f.text_field :name, class: "input", type: "text"%>
+        </div>
+      </div>
+
+      <div class="field">
+        <%= f.label :load, class:"label"%>
+        <div class="control">
+          <%= f.number_field :load, class: "input", type: "text"%>
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button class="button is-primary">Submit</button>
+      </div>
+    <% end %>
+  </div>
+</div>

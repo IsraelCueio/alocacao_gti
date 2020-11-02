@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   root 'pages#index'
   resources :projects
+  resources :project_types
   resources :positions
   resources :members
   get 'dashboard/statistics', to: 'dashboard#statistics'

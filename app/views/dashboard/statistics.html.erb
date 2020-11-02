@@ -13,22 +13,12 @@
       </div>
 
       <div class="tile is-4 is-vertical is-parent">
-        <div class="tile is-child box">
-          <p class="title is-5">Sites</p>
-          <p class="subtitle"><%= @site_projects_count%></p>
-        </div>
-        <div class="tile is-child box">
-          <p class="title is-5">Woo</p>
-          <p class="subtitle"><%= @woo_projects_count%></p>
-        </div>
-        <div class="tile is-child box">
-          <p class="title is-5">Consulting</p>
-          <p class="subtitle"><%= @consult_projects_count%></p>
-        </div>
-        <div class="tile is-child box">
-          <p class="title is-5">System</p>
-          <p class="subtitle"><%= @system_projects_count%></p>
-        </div>
+        <% @project_types.each do |pt| %>
+          <div class="tile is-child box">
+            <p class="title is-5"><%= pt.name %></p>
+            <p class="subtitle"><%= pt.projects.count %></p>
+          </div>
+        <% end %>
       </div>
     </div>
     <div class="columns">

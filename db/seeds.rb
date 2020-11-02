@@ -8,14 +8,38 @@
 
 Member.create(name: 'Gusta')
 p '######Membro criado com sucesso######'
+
+ProjectType.create(
+  name: 'Site',
+  load: '20'
+)
+
+ProjectType.create(
+  name: 'WooCommerce',
+  load: '25'
+)
+
+ProjectType.create(
+  name: 'Consulting',
+  load: '25'
+)
+
+ProjectType.create(
+  name: 'System',
+  load: '30'
+)
 Project.create(
                 name: 'Alocação GTi',
-                descriptions:'Projeto para ajudar na alocação dos membros',
                 complexity: 2,
                 internal: true,
                 state: 1,
-                manager: Member.last
+                project_type_id: 4
               )
+
+MemberProject.create(
+  project_id: Project.last.id,
+  member_id: Member.last.id
+)
 
 p '######Projeto criado com sucesso######'
 
