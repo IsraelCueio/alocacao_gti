@@ -24,5 +24,7 @@ class RemoveTypeProjectFromProject < ActiveRecord::Migration[6.0]
       project.update_columns(project_type_id: type.id)
     end
     remove_column :projects, :type_project
+
+    Member.all.each(&:calc_member_load)
   end
 end
