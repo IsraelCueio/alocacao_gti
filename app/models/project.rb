@@ -9,6 +9,7 @@ class Project < ApplicationRecord
   ransacker :complexity, formatter: proc { |v| complexities[v] }
   # ransacker :type_project, formatter: proc { |v| type_projects[v] }
 
+  belongs_to :enterprise
   belongs_to :project_type
 
   has_many :member_projects, dependent: :destroy

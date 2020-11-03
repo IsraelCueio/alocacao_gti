@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @q = Project.ransack(params[:q])
+    @q = @current_enterprise.projects.ransack(params[:q])
     @projects = @q.result.order(state: :desc)
   end
 
@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @project = Project.new(project_params)
+    @project = @current_enterprise.projects.build(project_params)
 
     respond_to do |format|
       if @project.save
@@ -66,7 +66,7 @@ class ProjectsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_project
-    @project = Project.find(params[:id])
+    @project = @current_enterprise.projects.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

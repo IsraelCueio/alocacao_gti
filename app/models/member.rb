@@ -1,4 +1,6 @@
 class Member < ApplicationRecord
+  belongs_to :enterprise
+
   has_many :member_positions, dependent: :destroy
   has_many :positions, through: :member_positions
 

@@ -1,6 +1,8 @@
 class ProjectType < ApplicationRecord
   after_save :update_members_loads
 
+  belongs_to :enterprise
+
   has_many :projects
 
   def update_members_loads

@@ -21,6 +21,7 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
+            <span class="mx-5">Logado como : <%= @current_enterprise.name %> </span>
             <strong><%= link_to 'Log out', destroy_admin_session_path, method: :delete, class: "button is-primary" %></strong>
         </div>
       </div>

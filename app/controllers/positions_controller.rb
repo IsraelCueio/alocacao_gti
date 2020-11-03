@@ -4,7 +4,7 @@ class PositionsController < ApplicationController
   # GET /positions
   # GET /positions.json
   def index
-    @q = Position.ransack(params[:q])
+    @q = @current_enterprise.positions.ransack(params[:q])
     @positions = @q.result.order(load: :desc)
   end
 
@@ -25,7 +25,7 @@ class PositionsController < ApplicationController
   # POST /positions
   # POST /positions.json
   def create
-    @position = Position.new(position_params)
+    @position = @current_enterprise.positions.build(position_params)
 
     respond_to do |format|
       if @position.save
@@ -65,7 +65,7 @@ class PositionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_position
-      @position = Position.find(params[:id])
+      @position = @current_enterprise.positions.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

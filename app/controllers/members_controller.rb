@@ -4,7 +4,7 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @q = Member.ransack(params[:q])
+    @q = @current_enterprise.members.ransack(params[:q])
     @members = @q.result.order(load: :desc)
   end
 
@@ -25,7 +25,7 @@ class MembersController < ApplicationController
   # POST /members
   # POST /members.json
   def create
-    @member = Member.new(member_params)
+    @member = @current_enterprise.members.build(member_params)
 
     respond_to do |format|
       if @member.save
@@ -66,7 +66,7 @@ class MembersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_member
-    @member = Member.find(params[:id])
+    @member = @current_enterprise.members.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

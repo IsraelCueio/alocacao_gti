@@ -2,7 +2,7 @@ class ProjectTypesController < ApplicationController
   before_action :set_project_type, only: [:show, :edit, :update, :destroy]
 
   def index
-    @project_types = ProjectType.all
+    @project_types = @current_enterprise.project_types.all
   end
 
   def show
@@ -16,7 +16,7 @@ class ProjectTypesController < ApplicationController
   end
 
   def create
-    @project_type = ProjectType.new(project_type_params)
+    @project_type = @current_enterprise.project_types.build(project_type_params)
 
     respond_to do |format|
       if @project_type.save
@@ -49,7 +49,7 @@ class ProjectTypesController < ApplicationController
   private
 
   def set_project_type
-    @project_type = ProjectType.find(params[:id])
+    @project_type = @current_enterprise.project_types.find(params[:id])
   end
 
   def project_type_params
