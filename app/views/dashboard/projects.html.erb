@@ -25,7 +25,7 @@
           <%= f.label :type_project, class:"label" %>  
           <div class="control">
             <div class="select ">
-              <%= f.collection_select :project_type_id_eq, ProjectType.all, :id, :name, include_blank: 'Todos' %></div>
+              <%= f.collection_select :project_type_id_eq, @project_types, :id, :name, include_blank: 'Todos' %></div>
           </div>
         </div>
         <div class="control mt-5 pt-2 mr-2">

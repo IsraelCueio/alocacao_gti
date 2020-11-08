@@ -1,6 +1,6 @@
 <div class='nested-fields'>
   <div class="select mt-2">
-   <%= f.collection_select(:member_id, Member.all, :id, :name) %>
+   <%= f.collection_select(:member_id, @members , :id, :name) %>
   </div>
   <%= link_to_remove_association "remove project", f , class:"m-4" %>
 </div>

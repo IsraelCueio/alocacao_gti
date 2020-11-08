@@ -27,7 +27,7 @@
           <%= f.label :project_type, class:"label" %>  
           <p class="control is-expanded ">
             <div class="select">
-              <%= f.collection_select(:project_type_id, ProjectType.all, :id, :name) %>
+              <%= f.collection_select(:project_type_id, @project_types, :id, :name) %>
             </div>
           </p>
         </div>

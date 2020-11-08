@@ -1,5 +1,7 @@
 class MembersController < ApplicationController
   before_action :set_member, only: [:show, :edit, :update, :destroy]
+  before_action :set_projects, only: [:edit, :new]
+  before_action :set_positions, only: [:edit, :new]
 
   # GET /members
   # GET /members.json
@@ -67,6 +69,14 @@ class MembersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_member
     @member = @current_enterprise.members.find(params[:id])
+  end
+
+  def set_projects
+    @projects = @current_enterprise.projects
+  end
+
+  def set_positions
+    @positions = @current_enterprise.positions
   end
 
   # Only allow a list of trusted parameters through.

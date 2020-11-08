@@ -1,6 +1,8 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_project_types, only: [:edit, :new]
+  before_action :set_members, only: [:edit, :new]
+  
   # GET /projects
   # GET /projects.json
   def index
@@ -67,6 +69,14 @@ class ProjectsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_project
     @project = @current_enterprise.projects.find(params[:id])
+  end
+
+  def set_project_types
+    @project_types = @current_enterprise.project_types
+  end
+
+  def set_members
+    @members = @current_enterprise.members
   end
 
   # Only allow a list of trusted parameters through.

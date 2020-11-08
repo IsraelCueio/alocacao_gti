@@ -1,5 +1,6 @@
 class DashboardController < ApplicationController
   before_action :set_enterprise
+  before_action :set_project_types, only: :projects
 
   def statistics
     @projects_count = @current_enterprise.projects.count
@@ -25,5 +26,11 @@ class DashboardController < ApplicationController
   def developers
     developers_ids = MemberProject.includes(:member).where(members: {enterprise_id: @current_enterprise.id}).pluck(:member_id).uniq
     @developers = Member.where(id: developers_ids).order(load: :desc)
+  end
+
+  private
+ 
+  def set_project_types
+    @project_types = @current_enterprise.project_types
   end
 end

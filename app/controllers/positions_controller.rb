@@ -63,13 +63,14 @@ class PositionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_position
-      @position = @current_enterprise.positions.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def position_params
-      params.require(:position).permit(:name, :load)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_position
+    @position = @current_enterprise.positions.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def position_params
+    params.require(:position).permit(:name, :load)
+  end
 end
