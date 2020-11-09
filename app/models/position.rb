@@ -6,7 +6,7 @@ class Position < ApplicationRecord
   has_many :member_positions, dependent: :destroy
   has_many :members, through: :member_positions
 
-  enum load: { 'low': 10, 'medium-low': 15, 'medium': 20, 'medium-high': 25, 'high':30 }
+  enum load: { 'no load': 0, 'low': 10, 'medium-low': 15, 'medium': 20, 'medium-high': 25, 'high':30 }
 
   def update_members_loads
     members.each(&:calc_member_load)
