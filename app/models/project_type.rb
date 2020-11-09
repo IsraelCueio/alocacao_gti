@@ -2,8 +2,9 @@ class ProjectType < ApplicationRecord
   after_save :update_members_loads
 
   belongs_to :enterprise
+  has_many :projects, dependent: :destroy
 
-  has_many :projects
+  enum load: { 'low': 10, 'medium-low': 15, 'medium': 20, 'medium-high': 25, 'high':30 }
 
   def update_members_loads
     projects.each do |project|
