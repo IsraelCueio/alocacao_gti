@@ -1,5 +1,4 @@
 class DashboardController < ApplicationController
-  before_action :set_enterprise
   before_action :set_project_types, only: :projects
 
   def statistics
