@@ -20,11 +20,13 @@
         </div>
       </div>
 
-      <div class="field">
-        <%= f.label :load , class:"label"%>
-        <div class="control">
-          <%= f.text_field :load , class:"input", type:"text"%>
-        </div>
+      <div class="field mr-2">
+        <%= f.label :load, class:"label" %>
+        <p class="control is-expanded ">
+          <div class="select">
+            <%= f.select :load, Position.loads.keys, class:"select" %>
+          </div>
+        </p>
       </div>
 
       <div class="buttons">

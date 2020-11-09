@@ -3,7 +3,6 @@ class Project < ApplicationRecord
 
   enum complexity: %i[Beginner Intermediate Experient]
   enum state: %i[Stoped Starting Middle Finishing Support]
-  enum type_project: %i[Site Woocommerce Consulting System]
 
   ransacker :state, formatter: proc { |v| states[v] }
   ransacker :complexity, formatter: proc { |v| complexities[v] }

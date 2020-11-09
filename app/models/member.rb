@@ -39,11 +39,11 @@ class Member < ApplicationRecord
   end
 
   def calc_project_development_load(project)
-    project.project_type.load * complexity_factor(project) * state_factor(project)
+    project.project_type.load_before_type_cast * complexity_factor(project) * state_factor(project)
   end
 
   def calc_project_managing_load(project)
-    project.project_type.load * complexity_factor(project) * manager_state_factor(project)
+    project.project_type.load_before_type_cast * complexity_factor(project) * manager_state_factor(project)
   end
 
   def complexity_factor(project)
