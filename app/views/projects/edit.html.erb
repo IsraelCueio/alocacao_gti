@@ -1,11 +1,11 @@
 <div class="columns is-centered is-mobile mt-5">
   <div class="column is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-fifths-widescreen">
-   <h2 class="subtitle">Editing Project</h2>
+   <h2 class="subtitle"><%= t('actions.project.edit')%></h2>
 
     <%= render 'form', project: @project %>
     <div class="mt-4 ml-2">
-      <%= link_to 'Show', @project %> |
-      <%= link_to 'Back', projects_path %>
+      <%= link_to t('actions.show'), @project %> |
+      <%= link_to t('actions.back'), projects_path %>
     </div>
   </div>
 </div>

@@ -18,8 +18,8 @@
               <tr>
                 <td><%= project_type.name %></td>
                 <td><%= project_type.load %></td>
-                <td><%= link_to 'Edit', edit_project_type_path(project_type) %></td>
-                <td><%= link_to 'Destroy', project_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td><%= link_to t('actions.edit'), edit_project_type_path(project_type) %></td>
+                <td><%= link_to t('actions.destroy'), project_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>
             <% end %>
           </tbody>

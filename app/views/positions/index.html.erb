@@ -21,9 +21,9 @@
             <tr>
               <td><%= position.name %></td>
               <td><%= position.load %></td>
-              <td><%= link_to 'Show', position %></td>
-              <td><%= link_to 'Edit', edit_position_path(position) %></td>
-              <td><%= link_to 'Destroy', position, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to t('actions.show'), position %></td>
+              <td><%= link_to t('actions.edit'), edit_position_path(position) %></td>
+              <td><%= link_to t('actions.destroy'), position, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
           <% end %>
         </tbody>

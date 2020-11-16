@@ -4,18 +4,18 @@
 
     <%#= image_tag "/project.png"%>
 
-    <h1 class="title">Projects</h1>
+    <h1 class="title"><%=Project.model_name.human(count:2)%></h1>
 
     <div class="table-container">
       <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
         <thead>
           <tr>
-            <th><%= sort_link(@q, :name) %></th>
-            <th><%= sort_link(@q, :type_project) %></th>
-            <th><%= sort_link(@q, :complexity) %></th>
-            <th><%= sort_link(@q, :internal) %></th>
-            <th><%= sort_link(@q, :state) %></th>
-            <th>Options</th>
+            <th><%= sort_link(@q, Project.human_attribute_name('name')) %></th>
+            <th><%= sort_link(@q, ProjectType.model_name.human) %></th>
+            <th><%= sort_link(@q, Project.human_attribute_name('complexity')) %></th>
+            <th><%= sort_link(@q, Project.human_attribute_name('internal')) %></th>
+            <th><%= sort_link(@q, Project.human_attribute_name('state')) %></th>
+            <th><%=t(:options)%></th>
           </tr>
         </thead>
 
@@ -28,9 +28,9 @@
               <td><%= human_boolean(project.internal)%></td>
               <td><%= project.state %></td>
               <td style="white-space: nowrap;">
-                <%= link_to 'Show', project, class:"mr-1" %>
-                <%= link_to 'Edit', edit_project_path(project), class:"mr-1" %>
-                <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' }, class:"mr-1" %>
+                <%= link_to t('actions.show'), project, class:"mr-1" %>
+                <%= link_to t('actions.edit'), edit_project_path(project), class:"mr-1" %>
+                <%= link_to t('actions.destroy'), project, method: :delete, data: { confirm: 'Are you sure?' }, class:"mr-1" %>
               </td>
             </tr>
           <% end %>

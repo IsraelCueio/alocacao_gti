@@ -5,54 +5,51 @@
       <div class="card-content">
 
         <div class="title">
-          <h1 class="title has-text-centered">Project</h1>
+          <h1 class="title has-text-centered"><%= Project.model_name.human %></h1>
         </div>
         <hr>
         
         <h2 class="subtitle">
-          <strong>Name:</strong> <%= @project.name %> 
+          <strong><%= Project.human_attribute_name('name') %>:</strong> <%= @project.name %> 
         </h2>
         <hr>
         
         <span class="mr-2">
-          <strong>Type:</strong>
+          <strong><%= ProjectType.model_name.human %>:</strong>
           <%= @project.project_type.name %>
         </span>
         <span class="mr-2">
-          <strong>Complexity:</strong>
-          <%= @project.complexity %>
+          <strong><%= Project.human_attribute_name('complexity') %>:</strong>
+          <%= t("enums.project.complexity.#{@project.complexity}") %>
         </span>
         
         <span class="mr-2">    
-          <strong>Internal:</strong>
-          <%= @project.internal %>
+          <strong><%= Project.human_attribute_name('internal') %>:</strong>
+          <%= t("boolean.#{@project.internal}") %>
         </span>
 
         <span class="mr-2">
-          <strong>State:</strong>
-          <%= @project.state %>
+          <strong><%= Project.human_attribute_name('state') %>:</strong>
+          <%= t("enums.project.state.#{@project.state}") %>
         </span>
         <hr>
 
-        <span class="mr-2">
-          <strong>Gerente:</strong>
-          <% @project.managers.each do |manager| %>
-            <%= manager.try(:name) %>
-          <% end %>
-        </span>
+        <strong><%= t(:managers) %>:</strong>
+        <% @project.managers.each do |manager| %>
+          <p><%= manager.try(:name) %></p>
+        <% end %>
         <hr>
         
-        <strong>Developers:</strong>
-        
-        <% @project.developers.each do |developer|%>
-          <p> <%= developer.name %> </p>
+        <strong><%= t(:consultants) %>:</strong>
+        <% @project.developers.each do |consultant|%>
+          <p><%= consultant.name %></p>
         <% end %>
 
       </div>
     </div>
     <div class="mt-4 ml-2">
-      <%= link_to 'Edit', edit_project_path(@project) %> |
-      <%= link_to 'Back', projects_path %>
+      <%= link_to t('actions.edit'), edit_project_path(@project) %> |
+      <%= link_to t('actions.back'), projects_path %>
     </div>
   </div>
 </div>

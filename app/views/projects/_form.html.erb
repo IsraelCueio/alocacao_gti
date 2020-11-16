@@ -24,7 +24,7 @@
 
       <div class="field-body">
         <div class="field mr-2">
-          <%= f.label :project_type, class:"label" %>  
+          <%= f.label ProjectType.model_name.human, class:"label" %>  
           <p class="control is-expanded ">
             <div class="select">
               <%= f.collection_select(:project_type_id, @project_types, :id, :name) %>
@@ -36,7 +36,7 @@
           <%= f.label :complexity, class:"label" %>
           <p class="control is-expanded ">
             <div class="select">
-              <%= f.select :complexity, Project.complexities.keys, class:"select" %>
+              <%= f.select :complexity, complexity_enum_select_options(Project.complexities.keys), class:"select" %>
             </div>
           </p>
         </div>
@@ -45,7 +45,7 @@
           <%= f.label :state, class:"label" %>
           <p class="control is-expanded">
             <div class="select">
-              <%= f.select :state, Project.states.keys, class:"select" %>
+              <%= f.select :state, state_enum_select_options(Project.states.keys), class:"select" %>
             </div>
           </p>
         </div>
@@ -62,32 +62,32 @@
       </div>
       <hr>
 
-      <h3>Managers:</h3>
+      <h3><%=t(:managers)%>:</h3>
 
       <div id='managing_projects'>
         <%= f.fields_for :manager_projects do |manager_project| %>
           <%= render 'manager_project_fields', :f =>  manager_project %>
         <% end %>
         <div class='links my-4'>
-          <%= link_to_add_association 'add project', f , :manager_projects %>
+          <%= link_to_add_association t('actions.member.add_member'), f , :manager_projects %>
         </div>
       </div>
       <hr>
 
-      <h3>Project Developers:</h3>
+      <h3><%=t(:consultants)%>:</h3>
       
       <div id='member_projects'>
         <%= f.fields_for :member_projects do |member_project| %>
           <%= render 'member_project_fields', :f => member_project %>
         <% end %>
         <div class='links my-4'>
-          <%= link_to_add_association 'Add member', f, :member_projects %>
+          <%= link_to_add_association t('actions.member.add_member'), f, :member_projects %>
         </div>
       </div>
       <hr>
 
       <div class="buttons">
-        <button class="button is-primary">Submit</button>
+        <button class="button is-primary"><%= t('actions.submit')%></button>
       </div>
     <% end %>
   </div>

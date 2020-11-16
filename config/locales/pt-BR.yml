@@ -1,0 +1,73 @@
+pt-BR:
+  activerecord:
+    models:
+      user:
+        one: 'Usuário'
+        other: 'Usuários'
+      project:
+        one: 'Projeto'
+        other: 'Projetos'
+      project_type:
+        one: 'Tipo de projeto'
+        other: 'Tipo de projetos'
+      position:
+        one: 'Cargo'
+        other: 'Cargos'
+      member:
+        one: 'Membro'
+        other: 'Membros'
+      enterprise:
+        one: 'Empresa'
+        other: 'Empresas'
+    attributes:
+      project:
+        name: 'Nome'
+        complexity: 'Complexidade'
+        internal: 'Interno'
+        state: 'Estado'
+      project_type:
+        name: 'Nome'
+  enums:
+    project:
+      complexity:
+        Beginner: 'Iniciante'
+        Intermediate: 'Intermediário'
+        Experient: 'Experiente'
+      state:
+        Stoped: 'Pausado'
+        Starting: 'Iniciando'
+        Middle: 'Meio'
+        Finishing: 'Finalizando'
+        Support: 'Suporte'
+          
+  boolean:
+    true: 'Sim'
+    false: 'Não'
+
+
+
+  actions:
+    show: 'Mostrar'
+    edit: 'Editar'
+    destroy: 'Apagar'
+    back: 'Voltar'
+    submit: 'Confirmar'
+
+    project:
+      edit: 'Editando Projeto'
+  
+    member:
+      add_member: 'Adicionar membro'
+      remove_member: 'Remover membro'
+    
+  name: 'nome'
+  options: 'Opções'
+
+  projects: 'Projetos'
+  members: 'Membros'
+  project_types: 'Tipos de Projeto'
+  positions: 'Cargos'
+
+  managers: 'Gerentes'
+  consultants: 'Consultores'
+  statistics: 'Estatisticas'
