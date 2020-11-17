@@ -6,26 +6,26 @@
       <div class="card-content">
 
         <div class="title">
-          <h1 class="title has-text-centered">Member</h1>
+          <h1 class="title has-text-centered"><%=Member.model_name.human%></h1>
         </div>
         <hr>
 
         <h2 class="subtitle">
-          <strong>Name:</strong> <%= @member.name %> 
+          <strong><%=Member.human_attribute_name('name')%>:</strong> <%= @member.name %> 
         </h2>
         <hr>
 
         <h2 class="subtitle">
-          <strong>Load:</strong> <%= @member.load  %> 
+          <strong><%=Member.human_attribute_name('load')%>:</strong> <%= @member.load  %> 
         </h2>
         <hr>
 
         <h2 class="subtitle">
-          <strong>Exit cycle:</strong> <%= human_boolean @member.exit_cycle  %> 
+          <strong><%=Member.human_attribute_name('exit_cycle')%>:</strong> <%= human_boolean @member.exit_cycle  %> 
         </h2>
         <hr>
 
-        <strong>Developed projects:</strong>
+        <strong><%=t(:developed_projects)%>:</strong>
 
         <p>
           <% @member.developed_projects.each do |project|%>
@@ -34,7 +34,7 @@
         </p>
         <hr>
 
-        <strong>Managed Projects:</strong>
+        <strong><%=t(:managed_projects)%>:</strong>
 
         <p>
           <% @member.managed_projects.each do |project|%>
@@ -43,7 +43,7 @@
         </p>
         <hr>
 
-        <strong>Positions:</strong>
+        <strong><%=Position.model_name.human(count: 2)%>:</strong>
         <p>
           <% @member.positions.each do |position|%>
             <p> <%= position.name %> </p>

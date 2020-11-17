@@ -5,12 +5,12 @@
       <div class="card-content">
 
         <h2 class="subtitle">
-          <strong>Name:</strong> <%= @position.name %> 
+          <strong><%=t(:name)%>:</strong> <%= @position.name %> 
         </h2>
         <hr>
 
         <h2 class="subtitle">
-          <strong>Load:</strong> <%= @position.load %> 
+          <strong><%=t(:load)%>:</strong> <%= t("enums.position.load.#{@position.load}") %> 
         </h2>
         <hr>
 

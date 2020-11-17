@@ -4,7 +4,7 @@
 
     <%#= image_tag "/positions.png"%>
 
-    <h1 class="title">Positions</h1>
+    <h1 class="title"><%=Position.model_name.human(count: 2)%></h1>
 
     <div class="table-container">
       <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
@@ -12,7 +12,7 @@
           <tr>
             <th><%= sort_link(@q, :name)%></th>
             <th><%= sort_link(@q, :load)%></th>
-            <th colspan="3">Options</th>
+            <th colspan="3"><%=t(:options)%></th>
           </tr>
         </thead>
 
@@ -20,7 +20,7 @@
           <% @positions.each do |position| %>
             <tr>
               <td><%= position.name %></td>
-              <td><%= position.load %></td>
+              <td><%= t("enums.position.load.#{position.load}") %></td>
               <td><%= link_to t('actions.show'), position %></td>
               <td><%= link_to t('actions.edit'), edit_position_path(position) %></td>
               <td><%= link_to t('actions.destroy'), position, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -31,6 +31,6 @@
     </div>
     <br>
 
-    <%= link_to 'New Position', new_position_path %>
+    <%= link_to t('actions.position.new'), new_position_path %>
   </div>
 </section>

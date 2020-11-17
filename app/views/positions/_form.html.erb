@@ -14,23 +14,23 @@
     <%= form_with(model: position, local: true) do |f| %>
       
       <div class="field">
-        <%= f.label :name , class:"label"%>
+        <%= f.label t(:name) , class:"label"%>
         <div class="control">
           <%= f.text_field :name , class:"input", type:"text"%>
         </div>
       </div>
 
       <div class="field mr-2">
-        <%= f.label :load, class:"label" %>
+        <%= f.label t(:load), class:"label" %>
         <p class="control is-expanded ">
           <div class="select">
-            <%= f.select :load, Position.loads.keys, class:"select" %>
+            <%= f.select :load, load_enum_select_options(Position.loads.keys), class:"select" %>
           </div>
         </p>
       </div>
 
       <div class="buttons">
-        <button class="button is-primary">Submit</button>
+        <button class="button is-primary"><%=t('actions.submit')%></button>
       </div>
     <% end %>
   </div>

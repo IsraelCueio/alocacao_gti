@@ -31,43 +31,43 @@
       </div>
 
       <hr>
-      <h3>Managed Projects: </h3>
+      <h3><%=t(:managed_projects)%>: </h3>
 
       <div id='managing_projects'>
         <%= f.fields_for :manager_projects do |manager_project| %>
           <%= render 'manager_project_fields', :f =>  manager_project %>
         <% end %>
         <div class='links my-4'>
-          <%= link_to_add_association 'add project', f , :manager_projects %>
+          <%= link_to_add_association t('actions.project.add_project'), f , :manager_projects %>
         </div>
       </div>
 
       <hr>
-      <h3>Member developed Projects: </h3>
+      <h3><%=t(:developed_projects)%>: </h3>
 
       <div id='member_projects'>
         <%= f.fields_for :member_projects do |member_project| %>
           <%= render 'member_project_fields', :f => member_project %>
         <% end %>
         <div class='links my-4'>
-          <%= link_to_add_association 'add project', f , :member_projects %>
+          <%= link_to_add_association t('actions.project.add_project'), f , :member_projects %>
         </div>
       </div>
 
       <hr>
-      <h3>Member positions: </h3>
+      <h3><%=Position.model_name.human(count:2)%>: </h3>
 
       <div id='member_positions'>
         <%= f.fields_for :member_positions do |member_position| %>
           <%= render 'member_position_fields', :f => member_position %>
         <% end %>
         <div class='links my-4'>
-          <%= link_to_add_association 'add position', f, :member_positions %>
+          <%= link_to_add_association t('actions.position.add_position'), f, :member_positions %>
         </div>
       </div>
 
       <div class="buttons">
-        <button class="button is-primary">Submit</button>
+        <button class="button is-primary"><%=t('actions.submit')%></button>
       </div>
     <% end %>
   </div>

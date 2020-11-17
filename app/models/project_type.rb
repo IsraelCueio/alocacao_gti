@@ -4,7 +4,7 @@ class ProjectType < ApplicationRecord
   belongs_to :enterprise
   has_many :projects, dependent: :destroy
 
-  enum load: { 'no load': 0, 'low': 10, 'medium-low': 15, 'medium': 20, 'medium-high': 25, 'high':30 }
+  enum load: { no_load: 0, low: 10, medium_low: 15, medium: 20, medium_high: 25, high:30 }
 
   def update_members_loads
     projects.each do |project|

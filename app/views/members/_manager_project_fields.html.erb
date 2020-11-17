@@ -2,5 +2,5 @@
   <div class="select mt-2">
    <%= f.collection_select(:project_id, @projects, :id, :name) %>
   </div>
-  <%= link_to_remove_association "remove project", f , class:"m-4" %>
+  <%= link_to_remove_association t('actions.project.remove_project'), f , class:"m-4" %>
 </div>

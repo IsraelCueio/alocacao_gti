@@ -2,13 +2,13 @@
   <div class="container">
     <p id="notice"><%= notice %></p>
 
-    <h1 class="title is-1 has-text-centered">Project Types</h1>
+    <h1 class="title"><%=ProjectType.model_name.human(count:2)%></h1>
       <div class="table-container">
         <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Load</th>
+              <th><%=t(:name)%></th>
+              <th><%=t(:load)%></th>
               <th colspan="3"></th>
             </tr>
           </thead>
@@ -17,7 +17,7 @@
             <% @project_types.each do |project_type| %>
               <tr>
                 <td><%= project_type.name %></td>
-                <td><%= project_type.load %></td>
+                <td><%= t("enums.project_type.load.#{project_type.load}") %></td>
                 <td><%= link_to t('actions.edit'), edit_project_type_path(project_type) %></td>
                 <td><%= link_to t('actions.destroy'), project_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               </tr>

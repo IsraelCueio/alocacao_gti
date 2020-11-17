@@ -25,7 +25,7 @@
               <td style="white-space: nowrap;"><%= project.name %></td>
               <td><%= project.project_type.name %></td>
               <td><%= project.complexity %></td>
-              <td><%= human_boolean(project.internal)%></td>
+              <td><%= t("boolean.#{project.internal}")%></td>
               <td><%= project.state %></td>
               <td style="white-space: nowrap;">
                 <%= link_to t('actions.show'), project, class:"mr-1" %>
