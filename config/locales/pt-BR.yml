@@ -27,6 +27,10 @@ pt-BR:
         state: 'Estado'
       project_type:
         name: 'Nome'
+      member:
+        name: 'Nome'
+        load: 'Carga'
+        exit_cycle: 'Ciclo de saida'
   enums:
     project:
       complexity:
@@ -38,13 +42,10 @@ pt-BR:
         Starting: 'Iniciando'
         Middle: 'Meio'
         Finishing: 'Finalizando'
-        Support: 'Suporte'
-          
+        Support: 'Suporte'          
   boolean:
     true: 'Sim'
     false: 'Não'
-
-
 
   actions:
     show: 'Mostrar'
@@ -52,22 +53,22 @@ pt-BR:
     destroy: 'Apagar'
     back: 'Voltar'
     submit: 'Confirmar'
-
     project:
       edit: 'Editando Projeto'
-  
     member:
       add_member: 'Adicionar membro'
       remove_member: 'Remover membro'
     
   name: 'nome'
   options: 'Opções'
+  managed_projects: 'Projetos gerenciados'
+
+  managers: 'Gerentes'
+  consultants: 'Consultores'
+  statistics: 'Estatisticas'
+  laod: 'Carga'
 
   projects: 'Projetos'
   members: 'Membros'
   project_types: 'Tipos de Projeto'
   positions: 'Cargos'
-
-  managers: 'Gerentes'
-  consultants: 'Consultores'
-  statistics: 'Estatisticas'

@@ -1,6 +1,5 @@
 <section class="section">
   <div class="container">
-
     <%= render partial: "navbar", locals: { projects: "is-active" }%>
     
     <%= search_form_for @q, url: dashboard_projects_path do |f|%>
@@ -9,7 +8,7 @@
           <%= f.label :state, class:"label" %>  
           <div class="control">
             <div class="select ">
-              <%= f.select :state_eq, Project.states.keys, include_blank: 'Todos' %>
+              <%= f.select :state_eq, state_enum_select_options(Project.states.keys), include_blank: 'Todos' %>
             </div>
           </div>
         </div>
@@ -17,15 +16,16 @@
           <%= f.label :complexity, class:"label" %>  
           <div class="control">
             <div class="select ">
-              <%= f.select :complexity_eq, Project.complexities.keys, include_blank: 'Todos' %>
+              <%= f.select :complexity_eq, complexity_enum_select_options(Project.complexities.keys), include_blank: 'Todos' %>
             </div>
           </div>
         </div>
         <div class="field mr-2">
-          <%= f.label :type_project, class:"label" %>  
+          <%= f.label ProjectType.model_name.human, class:"label" %>  
           <div class="control">
             <div class="select ">
-              <%= f.collection_select :project_type_id_eq, @project_types, :id, :name, include_blank: 'Todos' %></div>
+              <%= f.collection_select :project_type_id_eq, @project_types, :id, :name, include_blank: 'Todos' %>
+            </div>
           </div>
         </div>
         <div class="control mt-5 pt-2 mr-2">
@@ -45,22 +45,21 @@
             </header>
               <div class="card-content">
                 <div class="content">
-                <strong>Manager:</strong>
+                <strong><%= t(:managers)%>:</strong>
                 <% project.managers.each do |manager| %>
                   <%= manager.try(:name) %>
                 <% end %>
                 <br>
-                <strong>Members:</strong>
+                <strong><%= t(:consultants)%>:</strong>
                 <% project.developers.each do |developer| %>
                   <%= developer.name %>
                 <% end %>
                 <hr>
-                <strong>State: </strong> <%= project.state %>
+                <strong><%= Project.human_attribute_name('state')%>: </strong> <%= t("enums.project.state.#{project.state}") %>
                 <br>
-                <strong>Complexity: </strong> <%= project.complexity %>
+                <strong><%= Project.human_attribute_name('complexity')%>: </strong> <%= t("enums.project.complexity.#{project.complexity}") %>
                 <br>
-                <strong>Internal: </strong> <%= human_boolean project.internal %>
-                
+                <strong><%= Project.human_attribute_name('internal')%>: </strong> <%= t("boolean.#{project.internal}") %>
                 </div>
               </div>
           </div>

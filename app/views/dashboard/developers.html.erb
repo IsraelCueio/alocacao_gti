@@ -9,14 +9,14 @@
           <div class="card">
             <header class="card-header" style="background-color: #6650aa">
               <p class="card-header-title has-text-white">
-                  <%= developer.name %> - Load: <%= developer.load %>
+                  <%= developer.name %> - <%=Member.human_attribute_name('load')%>: <%= developer.load %>
               </p>
             </header>
               <div class="card-content">
                 <div class="content">
-                  <p><strong>Developed projects: </strong></p>
+                  <p><strong><%=Project.model_name.human(count: 2)%>: </strong></p>
                   <% developer.developed_projects.each do |project| %>
-                    <%= project.name %> - <i><strong><%= project.state %></strong></i><br>
+                    <%= project.name %> - <i><strong><%= t("enums.project.state.#{project.state}") %></strong></i><br>
                   <% end %>
                 </div>
               </div>
