@@ -86,6 +86,7 @@ pt-BR:
       add_position: 'Adiciona Cargo'
       remove_position: 'Remover Cargo'
     project_type:
+      new: 'Novo Tipo de Projeto'
       edit: 'Editando Tipo de Projeto'
     
   name: 'Nome'
