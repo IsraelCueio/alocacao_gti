@@ -24,9 +24,9 @@
             <tr>
               <td style="white-space: nowrap;"><%= project.name %></td>
               <td><%= project.project_type.name %></td>
-              <td><%= project.complexity %></td>
+              <td><%= t("enums.project.complexity.#{project.complexity}") %></td>
               <td><%= t("boolean.#{project.internal}")%></td>
-              <td><%= project.state %></td>
+              <td><%= t("enums.project.state.#{project.state}")%></td>
               <td style="white-space: nowrap;">
                 <%= link_to t('actions.show'), project, class:"mr-1" %>
                 <%= link_to t('actions.edit'), edit_project_path(project), class:"mr-1" %>
