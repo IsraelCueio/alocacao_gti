@@ -18,12 +18,12 @@ class DashboardController < ApplicationController
   end
 
   def managers
-    managers_ids = ManagerProject.includes(:member).where(members: {enterprise_id: @current_enterprise.id}).pluck(:member_id).uniq
+    managers_ids = ManagerProject.joins(:member).where(members: {enterprise_id: @current_enterprise.id}).pluck(:member_id).uniq
     @managers = Member.where(id: managers_ids).order(load: :desc)
   end
 
   def developers
-    developers_ids = MemberProject.includes(:member).where(members: {enterprise_id: @current_enterprise.id}).pluck(:member_id).uniq
+    developers_ids = MemberProject.joins(:member).where(members: {enterprise_id: @current_enterprise.id}).pluck(:member_id).uniq
     @developers = Member.where(id: developers_ids).order(load: :desc)
   end
 

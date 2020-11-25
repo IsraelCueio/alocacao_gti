@@ -13,6 +13,8 @@ class MembersController < ApplicationController
   # GET /members/1
   # GET /members/1.json
   def show
+    @development_load = @member.calc_development_load
+    @management_load = @member.calc_managing_load
   end
 
   # GET /members/new

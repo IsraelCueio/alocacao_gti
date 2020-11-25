@@ -98,6 +98,8 @@ pt-BR:
   consultants: 'Consultores'
   statistics: 'Estatisticas'
   load: 'Carga'
+  development_load: 'Carga de consultoria'
+  management_load: 'Carga de gerenciamento'
 
   projects: 'Projetos'
   members: 'Membros'
