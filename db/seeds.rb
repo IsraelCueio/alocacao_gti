@@ -6,29 +6,36 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Member.create(name: 'Gusta')
+membercreate=Member.create(name: 'Gusta')
 p '######Membro criado com sucesso######'
 
 ProjectType.create(
   name: 'Site',
-  load: '20'
+  load: 20
 )
 
 ProjectType.create(
   name: 'WooCommerce',
-  load: '25'
+  load: 25
 )
 
 ProjectType.create(
   name: 'Consulting',
-  load: '25'
+  load: 25
 )
 
 ProjectType.create(
   name: 'System',
-  load: '30'
+  load: 30
 )
-Project.create(
+
+User.create(
+  email: 'oitaloeh@lindo',
+  password: 'soarestbm'
+)
+
+
+projectcreate=Project.create(
                 name: 'Alocação GTi',
                 complexity: 2,
                 internal: true,
@@ -37,8 +44,8 @@ Project.create(
               )
 
 MemberProject.create(
-  project_id: Project.last.id,
-  member_id: Member.last.id
+  project_id: projectcreate.id,
+  member_id: membercreate.id
 )
 
 p '######Projeto criado com sucesso######'

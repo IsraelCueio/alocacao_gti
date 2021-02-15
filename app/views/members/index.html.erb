@@ -5,25 +5,40 @@
     <%#= image_tag "/members.png"%>
     <h1 class="title"><%=Member.model_name.human(count:2)%></h1>
     <div class="table-container">
-      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+      <table class="table is-bordered is-striped is-hoverable is-fullwidth">
         <thead>
           <tr>
-            <th><%= sort_link(@q, :name) %></th>
+            <th class="left-corner"><%= sort_link(@q, :name) %></th>
             <th><%= sort_link(@q, :load) %></th>
             <th><%= sort_link(@q, :exit_cycle) %></th>
-            <th colspan="3"><%=t(:options)%></th>
+            <th colspan="3" class="has-text-centered right-corner"><%=t(:options)%></th>
           </tr>
         </thead>
 
         <tbody>
           <% @members.each do |member| %>
             <tr>
-              <td><%= member.name %></td>
+              <td class="left-corner"><%= member.name %></td>
               <td><%= member.load %></td>
               <td><%= t("boolean.#{member.exit_cycle}") %></td>
-              <td><%= link_to t('actions.show'), member %></td>
-              <td><%= link_to t('actions.edit'), edit_member_path(member) %></td>
-              <td><%= link_to t('actions.destroy'), member, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td class="has-text-centered right-corner">
+
+              <!--  
+                <%= link_to "/members/#{member.id}" do%>
+                  <i class="far fa-eye"></i> Mostrar
+                <%end%>
+                <%= link_to "/members/#{member.id}/edit" do%>
+                  <i class="fas fa-edit"></i> Editar
+                <% end %>
+                <%= link_to "/members/#{member.id}", method: :delete, data: { confirm: 'Are you sure?'} do %>
+                  <i class="fas fa-trash-alt"></i> Remover
+                <% end %>
+-->
+
+                <i class="fas fa-ellipsis-h"></i>
+
+              </td>
+              
             </tr>
           <% end %>
         </tbody>

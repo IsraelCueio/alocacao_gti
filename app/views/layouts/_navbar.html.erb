@@ -1,3 +1,15 @@
+<script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+    $(function(){
+        $('a').each(function(){
+            if ($(this).prop('href') == window.location.href) {
+                $(this).addClass('active'); $(this).parents('li').addClass('active');
+            }
+        });
+    });
+</script>
+
+
 <nav class="navbar has-shadow" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <%= link_to root_path, class:"navbar-item" do %>
@@ -11,12 +23,22 @@
   </div>
 
   <div id="navbar" class="navbar-menu">
-    <div class="navbar-start">
-      <%= link_to 'Dashboard', dashboard_statistics_path, class:"navbar-item"%>
-      <%= link_to t(:projects), projects_path, class: "navbar-item" %>
-      <%= link_to t(:members), members_path, class: "navbar-item" %>
-      <%= link_to t(:project_types), project_types_path, class: "navbar-item" %>
-      <%= link_to t(:positions), positions_path, class: "navbar-item" %>
+      <%= link_to dashboard_statistics_path, class:"navbar-item" do %>
+        <i class="fas fa-project-diagram"></i> Dashboard
+      <% end %>
+      <%= link_to projects_path, class: "navbar-item" do %>
+        <i class="fas fa-window-restore"></i> Projetos
+      <% end %>
+      <%= link_to members_path, class: "navbar-item" do %>
+        <i class="fas fa-user-friends"></i> Membros
+      <% end %>
+      
+      <%= link_to project_types_path, class: "navbar-item tipodeprojeto-item" do %>
+        <i class="fas fa-laptop-code"></i> Tipos de Projeto
+      <% end %>
+      <%= link_to positions_path, class: "navbar-item" do %>
+        <i class="fas fa-user-tag"></i> Cargo
+      <% end %>
     </div>
     <div class="navbar-end">
       <div class="navbar-item">
@@ -29,3 +51,5 @@
   </div>
 
 </nav>
+
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>

@@ -1,43 +1,82 @@
 <section class="section">
   <div class="container">
-    <p id="noticed"><%= notice %></p>
-
+    <p id="notice">
+      <%= notice %>
+    </p>
+    
     <%#= image_tag "/project.png"%>
 
     <h1 class="title"><%=Project.model_name.human(count:2)%></h1>
 
     <div class="table-container">
-      <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+      <table class="table is-bordered is-striped is-hoverable is-fullwidth" cellspacing="0">
         <thead>
           <tr>
-            <th><%= sort_link(@q, Project.human_attribute_name('name')) %></th>
+            <th class="left-corner"><%= sort_link(@q, Project.human_attribute_name('name')) %></th>
             <th><%= sort_link(@q, ProjectType.model_name.human) %></th>
             <th><%= sort_link(@q, Project.human_attribute_name('complexity')) %></th>
             <th><%= sort_link(@q, Project.human_attribute_name('internal')) %></th>
-            <th><%= sort_link(@q, Project.human_attribute_name('state')) %></th>
-            <th><%=t(:options)%></th>
+            <th style="border-right-style: none !important;"><%= sort_link(@q, Project.human_attribute_name('state')) %></th>
+            <th style="border-left-style: none !important;" class="right-corner has-text-centered"><%=t(:options)%></th>
           </tr>
         </thead>
 
         <tbody>
           <% @projects.each do |project| %>
             <tr>
-              <td style="white-space: nowrap;"><%= project.name %></td>
+              <td class="left-corner"><%= project.name %></td>
               <td><%= project.project_type.name %></td>
               <td><%= t("enums.project.complexity.#{project.complexity}") %></td>
               <td><%= t("boolean.#{project.internal}")%></td>
-              <td><%= t("enums.project.state.#{project.state}")%></td>
-              <td style="white-space: nowrap;">
-                <%= link_to t('actions.show'), project, class:"mr-1" %>
-                <%= link_to t('actions.edit'), edit_project_path(project), class:"mr-1" %>
-                <%= link_to t('actions.destroy'), project, method: :delete, data: { confirm: 'Are you sure?' }, class:"mr-1" %>
+              <td style="border-right-style: none !important;"><%= t("enums.project.state.#{project.state}")%></td>
+              <td class="right-corner has-text-centered">
+                
+              <!--  
+                <%= link_to "/projects/#{project.id}" do%>
+                  <i class="far fa-eye"></i> Mostrar
+                <% end %>
+                <%= link_to "/projects/#{project.id}/edit" do%>
+                  <i class="fas fa-edit"></i> Editar
+                <% end %>
+                <%= link_to "/projects/#{project.id}" , method: :delete, data: { confirm: 'Are you sure?' }, class:"mr-1" do%>
+                  <i class="fas fa-trash-alt"></i> Remover
+                <% end %>
+              -->
+                <div class="crud-hover">  
+                  <div class="card crud-options">
+                    <footer class="card-footer">
+                      <%= link_to "/projects/#{project.id}/edit", class:"crud-edit" do%>
+                        <i class="fas fa-edit"></i> 
+                        <div class="crud-text"> 
+                          Editar
+                        </div>
+                      <% end %>
+                      <%= link_to "/projects/#{project.id}" , method: :delete, data: { confirm: 'Are you sure?' }, class:"crud-delete" do%>
+                        <i class="fas fa-trash-alt"></i> 
+                        <div class="crud-text">  
+                          Remover
+                        </div>
+                      <% end %>
+                      <div class="crud-options-triangle">
+                      </div>  
+                    </footer>
+                  </div>
+                </div>
+
+                <i class="fas fa-ellipsis-h"></i>
               </td>
+              
             </tr>
           <% end %>
         </tbody>
       </table>
     </div>
     <br>
-    <%= link_to t('actions.project.new'), new_project_path %>
+    <button class="button is-success ">
+      <%= link_to new_project_path do %>
+        <i class="fas fa-plus"></i> Novo Projeto
+      <% end %>
+  </button>
+    
   </div>
 </section>

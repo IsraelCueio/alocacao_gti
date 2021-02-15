@@ -1,4 +1,4 @@
-<section class="section">
+<section class="section dashboard">
   <div class="container">
     <%= render partial: "navbar", locals: { projects: "is-active" }%>
     
@@ -38,7 +38,7 @@
       <% @projects.each do |project| %>
         <div class='column is-one-quarter'>
           <div class="card">
-            <header class="card-header" style="background-color: #6650aa">
+            <header class="card-header" style="background-color: #0676ED">
               <p class="card-header-title has-text-white">
               <%= project.name %>
               </p>

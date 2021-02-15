@@ -1,4 +1,3 @@
-    
     <% statistics ||= "" %>
     <% projects ||= "" %>
     <% managers ||= "" %>
@@ -6,7 +5,7 @@
 
     <h1 class="title">Dashboard</h1>
 
-    <div class="tabs is-large is-centered">
+    <div class="tabs is-large is-centered dashboard">
       <ul>
         <li class="<%= statistics %>"><%=link_to t(:statistics), dashboard_statistics_path %></li>
         <li class="<%= projects %>"><%=link_to t(:projects), dashboard_projects_path %></li>

@@ -4,22 +4,28 @@
 
     <h1 class="title"><%=ProjectType.model_name.human(count:2)%></h1>
       <div class="table-container">
-        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <table class="table is-bordered is-striped is-hoverable is-fullwidth">
           <thead>
             <tr>
-              <th><%=t(:name)%></th>
+              <th class="left-corner"><%=t(:name)%></th>
               <th><%=t(:load)%></th>
-              <th colspan="3"></th>
+              <th class="right-corner has-text-centered"><%=t(:options)%></th>
             </tr>
           </thead>
 
           <tbody>
             <% @project_types.each do |project_type| %>
               <tr>
-                <td><%= project_type.name %></td>
+                <td class="left-corner"><%= project_type.name %></td>
                 <td><%= t("enums.project_type.load.#{project_type.load}") %></td>
-                <td><%= link_to t('actions.edit'), edit_project_type_path(project_type) %></td>
-                <td><%= link_to t('actions.destroy'), project_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <td class="right-corner has-text-centered">
+                  <%= link_to "/project_type/#{project_type.id}/edit" do%>
+                    <i class="fas fa-edit"></i> Editar
+                  <% end %>
+                  <%= link_to "/project_type/#{project_type.id}" , method: :delete, data: { confirm: 'Are you sure?' } do%>
+                    <i class="fas fa-trash-alt"></i> Remover
+                  <% end %>
+                </td>
               </tr>
             <% end %>
           </tbody>

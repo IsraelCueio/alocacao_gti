@@ -1,11 +1,25 @@
-<div class="container">
+<%if notice.nil? == false %>
+  <div id="notice" class="notification">
+      <i class="fas fa-check"></i>
+    <%= notice%>
+  </div>
+<% end %>
+<div class="container home">
   <div class="columns is-mobile is-centered is-vcentered">
-    <div class="column is-half">
+    <div class="column is-12">
       <%= image_tag "/team.png"%>
+      </div>
+      </div>
+      <div class="columns is-mobile is-centered is-vcentered">
+      <div class="column is-full is-centered has-text-centered titulo">
       <h1 class="title is-1 has-text-centered">GTi Alocação</h1>
-        <div class="box">
-          <div class="columns">
-            <div class="column has-text-centered">
+      </div>
+      </div>
+      <div class="columns is-mobile is-centered is-vcentered">
+      <div class="column is-full is-centered">
+        <div class="box is-centered">
+          <div class="columns is-gapless is-centered menu">
+            <div class="column has-text-centered left-corner">
               <%= link_to 'Dashboard', dashboard_statistics_path %>
             </div>
             <div class="column has-text-centered">
@@ -14,7 +28,7 @@
             <div class="column has-text-centered">
               <%= link_to Member.model_name.human(count: 2), members_path %>
             </div>
-            <div class="column has-text-centered">
+            <div class="column has-text-centered right-corner">
               <%= link_to Position.model_name.human(count: 2), positions_path %>
             </div>
           </div>
