@@ -280,7 +280,7 @@ table td.right-corner{
     max-width: unset!important;
     background-color: #1E2745!important;
     z-index: 50;
-    filter: drop-shadow(0 0 3px rgba(0,0,0,0.5)) !important;
+    filter: drop-shadow(0 0 3px rgba(0,0,0,0.2)) !important;
 
 }
 
@@ -542,11 +542,11 @@ tbody .crud-options-triangle{
 
   tbody a .crud-text{
     font-size: 11px!important;
-    color: #97a5d8!important
+    color: #6f7cac!important;
+    margin-top:-2px;
 }
 
 tbody a:hover > .crud-text{
-    font-size: 11px!important;
     color: #ffffff!important
 }
 
