@@ -9,7 +9,7 @@
     <h1 class="title"><%=Project.model_name.human(count:2)%></h1>
 
     <div class="table-container">
-      <table class="table is-bordered is-striped is-hoverable is-fullwidth" cellspacing="0">
+      <table class="table is-bordered is-striped is-hoverable is-fullwidth" cellspacing="0" id="dataTable">
         <thead>
           <tr>
             <th class="left-corner"><%= sort_link(@q, Project.human_attribute_name('name')) %></th>
@@ -24,13 +24,12 @@
         <tbody>
           <% @projects.each do |project| %>
             <tr>
-              <td class="left-corner"><%= project.name %></td>
-              <td><%= project.project_type.name %></td>
-              <td><%= t("enums.project.complexity.#{project.complexity}") %></td>
-              <td><%= t("boolean.#{project.internal}")%></td>
-              <td style="border-right-style: none !important;"><%= t("enums.project.state.#{project.state}")%></td>
-              <td class="right-corner has-text-centered">
-                
+                <td class="left-corner" onclick="location.href='<%="/projects/#{project.id}" %>'"><%= project.name %></td>
+                <td onclick="location.href='<%="/projects/#{project.id}" %>'"><%= project.project_type.name %></td>
+                <td onclick="location.href='<%="/projects/#{project.id}" %>'"><%= t("enums.project.complexity.#{project.complexity}") %></td>
+                <td onclick="location.href='<%="/projects/#{project.id}" %>'"><%= t("boolean.#{project.internal}")%></td>
+                <td style="border-right-style: none;" onclick="location.href='<%="/projects/#{project.id}" %>'"><%= t("enums.project.state.#{project.state}")%></td>
+                <td class="right-corner has-text-centered"> 
               <!--  
                 <%= link_to "/projects/#{project.id}" do%>
                   <i class="far fa-eye"></i> Mostrar
@@ -76,7 +75,7 @@
       <%= link_to new_project_path do %>
         <i class="fas fa-plus"></i> Novo Projeto
       <% end %>
-  </button>
+    </button>
     
   </div>
 </section>

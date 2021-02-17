@@ -11,26 +11,30 @@ p '######Membro criado com sucesso######'
 
 ProjectType.create(
   name: 'Site',
-  load: 20
+  load: 20,
+  enterprise_id: 1
 )
 
 ProjectType.create(
   name: 'WooCommerce',
-  load: 25
+  load: 25,
+  enterprise_id: 1
 )
 
 ProjectType.create(
   name: 'Consulting',
-  load: 25
+  load: 25,
+  enterprise_id: 1
 )
 
 ProjectType.create(
   name: 'System',
-  load: 30
+  load: 30,
+  enterprise_id: 1
 )
 
 User.create(
-  email: 'oitaloeh@lindo',
+  email: 'oitaloeh@lindo1',
   password: 'soarestbm'
 )
 
@@ -50,6 +54,9 @@ MemberProject.create(
 
 p '######Projeto criado com sucesso######'
 
-Position.create(name:'Diretor')
+Position.create(
+  name:'Diretor',
+  enterprise_id: 1
+  )
 
 p '######Cargo criado com sucesso######'

@@ -237,10 +237,11 @@ table{
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.5);
 }
 
 table tr:hover{
-    background-color: #1E2745 !important;
+    background-color: #181e38 !important;
 }
 
 table th{
@@ -273,19 +274,51 @@ table td.right-corner{
     position: absolute !important;
     margin-top: -8px;
     margin-left: -12px;
-    left: -70px !important;
+    left: -90px !important;
     overflow: visible!important;
-    width: 105px!important;
-    max-width: unset!important
+    width: 110px;
+    max-width: unset!important;
+    background-color: #1E2745!important;
+    z-index: 50;
+    filter: drop-shadow(0 0 3px rgba(0,0,0,0.5)) !important;
+
+}
+
+.crud-options footer{
+    width: 110px!important;
 }
 
 .crud-hover{
     display: none!important;
+    opacity: 0;
+    transition-duration: 2s;
 }
 
 table td.right-corner:hover > .crud-hover{
-    display: block!important
+    opacity: 1;
+    transition-duration: 2s;
+    display: block!important;   
+    animation-name: CrudAnimation;
+    animation-duration: 500ms;
+    animation-fill-mode: forwards;
+    position:absolute
 }
+
+@keyframes CrudAnimation{
+    0%{
+      opacity: 0;
+      left:-100%;
+      display: block
+    }
+    40%{
+        left: 10px;
+        opacity: 1;
+      }
+    100%{
+      opacity: 1;
+      left: 0px
+    }
+  } 
 
 .crud-delete:hover ~ .crud-options-triangle{
     border-left-color: #F73333!important;
@@ -294,15 +327,15 @@ table td.right-corner:hover > .crud-hover{
 table th a{
     color:#ffffff !important
 }
-
+/*
 table th .desc{
-    color:#0676ED !important
+    color:#ffffff !important
 }
 
 table th .asc{
-    color:#0676ED !important
+    color:#ffffff !important
 }
-
+*/
 table td{
     border: 1px solid #11162b!important;
     color:$links-color;
@@ -310,7 +343,7 @@ table td{
 }
 
 table tr:hover > td {
-    border-color: #1a2140!important;
+    border-color: #131a31!important;
 }
 
 table tr{
@@ -479,6 +512,7 @@ background: linear-gradient(90deg, rgba(36,171,219,1) 0%, rgba(52,201,166,1) 59%
       color: #0676ED!important;
       padding-left: 5px;
       padding-right: 5px;
+      width: 100%
   }
 
   tbody .crud-edit{
@@ -500,14 +534,24 @@ tbody .crud-options-triangle{
     height: 0; 
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent;
-    border-left: 10px solid white;
+    border-left: 10px solid #1E2745;
     position: absolute!important;
-    left: 104px;
+    left: 110px;
     top: 25%
 }
 
   tbody a .crud-text{
     font-size: 11px!important;
+    color: #97a5d8!important
+}
+
+tbody a:hover > .crud-text{
+    font-size: 11px!important;
+    color: #ffffff!important
+}
+
+tbody a svg{
+    color: !important
 }
 
 tbody a.crud-delete:hover{
@@ -532,7 +576,7 @@ button.is-success{
     background-color: #0676ED!important;
 }
 
-button.is-success a:hover{
+button.is-success:hover > a{
     color: #0676ED!important;
 }
 
@@ -540,3 +584,11 @@ button.is-success:hover{
     background-color: #ffffff!important;
 }
 
+.table-container{
+    box-shadow: 0px 0px 3px rgba(0,0,0,0.4);
+    border-radius: 8px !important;
+}
+
+tbody tr td:not(.right-corner){
+    cursor:pointer;
+}

@@ -19,20 +19,40 @@
                 <td class="left-corner"><%= project_type.name %></td>
                 <td><%= t("enums.project_type.load.#{project_type.load}") %></td>
                 <td class="right-corner has-text-centered">
-                  <%= link_to "/project_type/#{project_type.id}/edit" do%>
-                    <i class="fas fa-edit"></i> Editar
-                  <% end %>
-                  <%= link_to "/project_type/#{project_type.id}" , method: :delete, data: { confirm: 'Are you sure?' } do%>
-                    <i class="fas fa-trash-alt"></i> Remover
-                  <% end %>
+                  <div class="crud-hover">  
+                    <div class="card crud-options">
+                      <footer class="card-footer">
+                        <%= link_to "/project_types/#{project_type.id}/edit", class:"crud-edit" do%>
+                          <i class="fas fa-edit"></i> 
+                          <div class="crud-text"> 
+                            Editar
+                          </div>
+                        <% end %>
+                        <%= link_to "/project_types/#{project_type.id}" , method: :delete, data: { confirm: 'Are you sure?' }, class:"crud-delete" do%>
+                          <i class="fas fa-trash-alt"></i> 
+                          <div class="crud-text">  
+                            Remover
+                          </div>
+                        <% end %>
+                        <div class="crud-options-triangle">
+                        </div>  
+                      </footer>
+                    </div>
+                  </div>
+                <i class="fas fa-ellipsis-h"></i>
+
                 </td>
               </tr>
             <% end %>
           </tbody>
         </table>
-      <br>
-        <%= link_to t('actions.project_type.new'), new_project_type_path %>
       </div>
+      <br>
+      <button class="button is-success ">
+      <%= link_to new_project_type_path do %>
+        <i class="fas fa-plus"></i> Novo Tipo de Projeto
+      <% end %>
+    </button>
   </div>
 </section>
 

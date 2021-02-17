@@ -21,16 +21,31 @@
             <tr>
               <td class="left-corner"><%= position.name %></td>
               <td><%= t("enums.position.load.#{position.load}") %></td>
-              <td class="right-corner has-text-center">
-                <%= link_to "/position/#{position.id}" do%>
-                  <i class="far fa-eye"></i> Mostrar
-                <% end %>
-                <%= link_to "/position/#{position.id}/edit" do %>
-                  <i class="fas fa-edit"></i> Editar
-                <% end %>
-                <%= link_to "/position/#{position.id}" , method: :delete, data: { confirm: 'Are you sure?'} do %>
-                  <i class="fas fa-trash-alt"></i> Remover
-                <% end %>
+              <td class="right-corner has-text-centered">
+                <div class="crud-hover">  
+                  <div class="card crud-options">
+                    <footer class="card-footer">
+                      <%= link_to "/positions/#{position.id}/edit", class:"crud-edit" do%>
+                        <i class="fas fa-edit"></i> 
+                        <div class="crud-text"> 
+                          Editar
+                        </div>
+                      <% end %>
+                      <%= link_to "/positions/#{position.id}" , method: :delete, data: { confirm: 'Are you sure?' }, class:"crud-delete" do%>
+                        <i class="fas fa-trash-alt"></i> 
+                        <div class="crud-text">  
+                          Remover
+                        </div>
+                      <% end %>
+                      <div class="crud-options-triangle">
+                      </div>  
+                    </footer>
+                  </div>
+                </div>
+
+                <i class="fas fa-ellipsis-h"></i>
+              </td>
+
               </td>
             </tr>
           <% end %>
@@ -39,6 +54,10 @@
     </div>
     <br>
 
-    <%= link_to t('actions.position.new'), new_position_path %>
+    <button class="button is-success ">
+      <%= link_to new_position_path do %>
+        <i class="fas fa-plus"></i> Novo Cargo
+      <% end %>
+    </button>
   </div>
 </section>

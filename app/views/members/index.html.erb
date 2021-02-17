@@ -18,9 +18,9 @@
         <tbody>
           <% @members.each do |member| %>
             <tr>
-              <td class="left-corner"><%= member.name %></td>
-              <td><%= member.load %></td>
-              <td><%= t("boolean.#{member.exit_cycle}") %></td>
+              <td onclick="location.href='<%="/members/#{member.id}" %>'" class="left-corner"><%= member.name %></td>
+              <td onclick="location.href='<%="/members/#{member.id}" %>'" ><%= member.load %></td>
+              <td onclick="location.href='<%="/members/#{member.id}" %>'" ><%= t("boolean.#{member.exit_cycle}") %></td>
               <td class="has-text-centered right-corner">
 
               <!--  
@@ -35,6 +35,27 @@
                 <% end %>
 -->
 
+                <div class="crud-hover">  
+                  <div class="card crud-options">
+                    <footer class="card-footer">
+                      <%= link_to "/members/#{member.id}/edit", class:"crud-edit" do%>
+                        <i class="fas fa-edit"></i> 
+                        <div class="crud-text"> 
+                          Editar
+                        </div>
+                      <% end %>
+                      <%= link_to "/members/#{member.id}" , method: :delete, data: { confirm: 'Are you sure?' }, class:"crud-delete" do%>
+                        <i class="fas fa-trash-alt"></i> 
+                        <div class="crud-text">  
+                          Remover
+                        </div>
+                      <% end %>
+                      <div class="crud-options-triangle">
+                      </div>  
+                    </footer>
+                  </div>
+                </div>
+
                 <i class="fas fa-ellipsis-h"></i>
 
               </td>
@@ -43,9 +64,13 @@
           <% end %>
         </tbody>
       </table>
-    <br>
-      <%= link_to t('actions.member.new'), new_member_path %>
     </div>
+    <br>
+    <button class="button is-success ">
+      <%= link_to new_member_path do %>
+        <i class="fas fa-plus"></i> Novo Membro
+      <% end %>
+    </button>
   </div>
 </section>
 
