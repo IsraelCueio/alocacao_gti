@@ -1,4 +1,4 @@
-
+<%= alert %>
 <% if project.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -21,9 +21,18 @@
           <%= f.text_field :name , class:"input", type:"text"%>
         </div>
       </div>
-
       <div class="field-body">
+      <%if @project_types.empty? == true%>
         <div class="field mr-2">
+          <%= f.label ProjectType.model_name.human, class:"label" %>  
+          <p class="control is-expanded ">
+            <div class="select">
+              <%= f.collection_select(:project_type_id, @project_types, :id, :name, {:prompt => "Nada ainda :/"}, {:class=>'disabled_selector'}) %>
+            </div>
+          </p>
+        </div>
+      <%else%>
+      <div class="field mr-2">
           <%= f.label ProjectType.model_name.human, class:"label" %>  
           <p class="control is-expanded ">
             <div class="select">
@@ -31,6 +40,7 @@
             </div>
           </p>
         </div>
+      <%end%>
 
         <div class="field mr-2">
           <%= f.label :complexity, class:"label" %>
@@ -85,9 +95,11 @@
         </div>
       </div>
       <hr>
-
+      
       <div class="buttons">
-        <button class="button is-primary"><%= t('actions.submit')%></button>
+        <button class="button is-primary">
+            <%= t('actions.submit')%> 
+        </button>
       </div>
     <% end %>
   </div>

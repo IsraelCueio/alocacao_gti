@@ -1,11 +1,14 @@
 class Member < ApplicationRecord
+
+  after_save :calc_member_load
+
   belongs_to :enterprise
 
   has_many :member_positions, dependent: :destroy
   has_many :positions, through: :member_positions
 
   has_many :member_projects, dependent: :destroy
-  has_many :developed_projects, through: :member_projects, source: :project
+  has_many :developed_projects, through: :member_projects, source: :project #1 ATRIBUTO: Nome da Relação ; 2 ATRIBUTO: Através de que tabela a relação ocorre
 
   has_many :manager_projects, dependent: :destroy
   has_many :managed_projects, through: :manager_projects, source: :project
@@ -15,16 +18,20 @@ class Member < ApplicationRecord
   accepts_nested_attributes_for :manager_projects, reject_if: :all_blank, allow_destroy: true
 
   def calc_member_load
-    update(load: calc_development_load + calc_managing_load + calc_position_load)
+    update_columns(load: calc_development_load + calc_managing_load + calc_position_load)
+    #Update columns ignora toda a camada que envolve o active record, ou seja, 
+    #ele não gerará um loop infinito por conta do after_save
+    #Futuramente procurar uma forma de fugir dos callbacks, procurar por "operation"
   end
 
+  #Cálculo da Carga do Cargo
   def calc_position_load
-    positions.sum(:load)
+    positions.sum(:load) #Soma da Carga de todos os cargos associados a essa pessoa
   end
 
   def calc_development_load
     projects_load = 0
-    developed_projects.each do |project|
+    developed_projects.each do |project| #Relação entre 
       projects_load += calc_project_development_load(project)
     end
     projects_load
@@ -41,7 +48,7 @@ class Member < ApplicationRecord
   def calc_project_development_load(project)
     project.project_type.load_before_type_cast * complexity_factor(project) * state_factor(project)
   end
-
+  
   def calc_project_managing_load(project)
     project.project_type.load_before_type_cast * complexity_factor(project) * manager_state_factor(project)
   end

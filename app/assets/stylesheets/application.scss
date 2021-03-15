@@ -592,3 +592,7 @@ button.is-success:hover{
 tbody tr td:not(.right-corner){
     cursor:pointer;
 }
+
+.disabled_selector{
+    border-color: #b7b7b7 !important;
+}

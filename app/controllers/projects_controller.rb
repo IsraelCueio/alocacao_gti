@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   before_action :set_project_types, only: [:edit, :new]
   before_action :set_members, only: [:edit, :new]
-  
+
   # GET /projects
   # GET /projects.json
   def index
@@ -31,11 +31,16 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
-        format.html { redirect_to @project, notice: 'Project was successfully created.' }
+        format.html { redirect_to @project, notice: 'Project was successfully created.'}
         format.json { render :show, status: :created, location: @project }
       else
-        format.html { render :new }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        if @project_types.nil? == true
+          format.html { redirect_to new_project_path, alert:"Você precisa de um Tipo de Projeto"}
+          format.json { render json: @project.errors, status: :unprocessable_entity }
+        else
+          format.html { render :new }
+          format.json { render json: @project.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
