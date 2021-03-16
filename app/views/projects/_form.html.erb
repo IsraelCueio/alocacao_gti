@@ -27,7 +27,7 @@
           <%= f.label ProjectType.model_name.human, class:"label" %>  
           <p class="control is-expanded ">
             <div class="select">
-              <%= f.collection_select(:project_type_id, @project_types, :id, :name, {:prompt => "Nada ainda :/"}, {:class=>'disabled_selector'}) %>
+              <%= f.collection_select(:project_type_id, @project_types, :id, :name, {:prompt => "Nada ainda :/"}, {:class=>'disabled_selector', :disabled=>'disabled'}) %>
             </div>
           </p>
         </div>
@@ -62,17 +62,20 @@
       </div>
 
       <br>
+      <span style="color: #849db7!important"><b>Interno</b></span>
       <div class="field">
         <div class="control">
-          <%= f.label :internal %>
-          <label class="checkbox">
+          <%= f.label :internal, :class=>'switch' do%>
+          
             <%= f.check_box :internal, type:"checkbox" %>
-          </label>
+            <span class="slider round"></span>
+
+          <% end %>
         </div>
       </div>
       <hr>
 
-      <h3><%=t(:managers)%>:</h3>
+      <span class="label"><h3><b><%=t(:managers)%>:</b></h3></span>
 
       <div id='managing_projects'>
         <%= f.fields_for :manager_projects do |manager_project| %>
@@ -84,7 +87,7 @@
       </div>
       <hr>
 
-      <h3><%=t(:consultants)%>:</h3>
+      <span class="label"><h3><b><%=t(:consultants)%>:</b></h3></span>
       
       <div id='member_projects'>
         <%= f.fields_for :member_projects do |member_project| %>

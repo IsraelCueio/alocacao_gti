@@ -97,19 +97,28 @@ nav svg{
     margin-right: 5%;
 }
 
-nav .button{
+.button{
     background-color: #0676ED !important;
     color: #ffffff!important;
 }
 
-nav .button:hover{
+.button span{
+    color: #ffffff!important;
+}
+
+.button:hover{
     background-color: #ffffff !important;
     color: #0676ED!important;
     transition-duration: 0.2s;
 }
 
+.button:hover > span{
+    color: #0676ED!important;
+    transition-duration: 0.2s;
+}
+
 nav a{
-    color: $links-color !important;
+    color: #929BC1 !important;
 }
 
 nav{
@@ -153,7 +162,7 @@ nav{
     border-color: $links-color !important;
 }
 
-.dashboard .card{
+.card{
     background-color: #1E2745!important;
 }
 
@@ -364,6 +373,10 @@ table tr{
     margin-bottom: 0px!important;
 }
 
+label{
+    color: #849db7 !important;
+}
+
 .devise .button{
     background-color: #0676ED !important;
     color: #ffffff!important;
@@ -376,15 +389,15 @@ table tr{
     transition-duration: 0.2s;
 }
 
-.devise .remember-me{
+.devise .check-box{
     color: $links-color!important;
 }
 
-.devise input{
+input{
     background-color: $body-color!important;
     border-color: #283153 !important;
     border-radius: 5px;
-    color: white;
+    color: white!important
 }
 
 .devise .text{
@@ -422,16 +435,16 @@ table tr{
     font-size: 18px;
 }
 
-.devise .remember-me {
+.devise .check-box {
     color: #58799b !important;
   }
 
-.remember-me {
+.check-box {
     position: relative;
-    color: #ffffff !important;
+    color: #849db7 !important
   }
   
-  .remember-me label {
+  .check-box label {
     background-color: $body-color;
     border: 1px solid #283153;
     border-radius: 50%;
@@ -444,7 +457,7 @@ table tr{
     font-size: 0px;
   }
   
-  .remember-me label:after {
+  .check-box label:after {
     border: 2px solid #fff;
     border-top: none;
     border-right: none;
@@ -458,16 +471,16 @@ table tr{
     width: 12px;
   }
   
-  .remember-me input[type="checkbox"] {
+  .check-box input[type="checkbox"] {
     visibility: hidden;
   }
   
-  .remember-me input[type="checkbox"]:checked + label {
+  .check-box input[type="checkbox"]:checked + label {
     background-color: #0676ED;
     border-color: #0676ED;
   }
   
-  .remember-me input[type="checkbox"]:checked + label:after {
+  .check-box input[type="checkbox"]:checked + label:after {
     opacity: 1;
   }
 
@@ -594,5 +607,112 @@ tbody tr td:not(.right-corner){
 }
 
 .disabled_selector{
-    border-color: #b7b7b7 !important;
+    filter: opacity(0.5) !important;
+    cursor: auto!important;
+}
+
+.disabled .select:not(.is-multiple):not(.is-loading)::after {
+    border-color: #848ca8 !important;
+    filter: opacity(0.5) !important;
+}
+
+.select:not(.is-multiple):not(.is-loading)::after {
+    border-color: #a3acca !important;
+    filter: opacity(0.5) !important;
+}
+
+.select:not(.is-multiple):not(.is-loading)::after:hover {
+    border-color: #0676ED !important;
+    filter: opacity(0.5) !important;
+}
+
+.title{
+    color: white !important
+}
+
+.subtitle{
+    color: white !important
+}
+
+hr{
+    background-color: #1c2542!important;
+}
+
+.select select{
+    background-color: #293455!important;
+    border-color: #2d3757!important;
+    border-radius: 4px!important;
+    color: #7582ac!important;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    margin-top:5px!important
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #536f8c;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #0676ED;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #0676ED;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(17px);
+    -ms-transform: translateX(17px);
+    transform: translateX(17px);
+  }
+
+  .slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#member_projects span{
+    color:#0676ED!important
+}
+
+#managing_projects span{
+    color:#0676ED!important
+}
+
+.label span, b{
+    color:#849db7!important
 }
